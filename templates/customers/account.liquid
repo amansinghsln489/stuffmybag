@@ -6,6 +6,7 @@
 
       <div class="grid">
 
+
         <div class="grid-item two-thirds medium-down--one-whole">
           <h3>{{ 'customer.orders.title' | t }}</h3>
 
@@ -14,13 +15,13 @@
 
           <table class="table table-bordered table-hover">
             <thead>
-              <tr>
+               {% comment %} <tr>
                 <th class="text-center">{{ 'customer.orders.order_number' | t }}</th>
                 <th class="text-center">{{ 'customer.orders.date' | t }}</th>
                 <th class="text-center">{{ 'customer.orders.payment_status' | t }}</th>
                 <th class="text-center">{{ 'customer.orders.fulfillment_status' | t }}</th>
                 <th class="text-center">{{ 'customer.orders.total' | t }}</th>
-              </tr>
+              </tr>  {% endcomment %}
             </thead>
             <tbody>
               {% for order in customer.orders %}
@@ -94,7 +95,7 @@
                   <p>
                     <a href="/account/addresses">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a>
                   </p>
-
+               </td>
               </tr>
             </tbody>
           </table>
