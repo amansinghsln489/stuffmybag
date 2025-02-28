@@ -1,0 +1,133 @@
+<div class="main-row {% if section.settings.fullwidth == true %}full-width{% endif  %}" data-section-id="{{ section.id }}">
+  <div class="container">
+    <div class="row">
+      <div class="main-col col-sm-12 col-md-12">
+        <div class="row sub-row">
+          <div class="sub-col col-sm-12 col-md-12">
+            {% include section.settings.layout %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% if template == 'index' %}
+<script type="text/javascript">
+$(document).ready(function () {
+	var feed = new Instafeed({
+		get: "user",
+		userId: '{{ section.settings.insta_access_token | split: "." | first }}',
+		accessToken: '{{ section.settings.insta_access_token }}',
+		limit: "{{ section.settings.insta_images_fetch }}",
+        resolution: "standard_resolution",
+        template: '<a href="\{\{image\}\}" target="_blank" class="fancybox">'+ 
+        '<img src="\{\{image\}\}" class="img-responsive">'+ '</a>',
+        target: "instafeed",
+        after: function () {
+			$("#instagram_block_home .content_block").owlCarousel({
+				autoPlay: false,
+				items: 6,
+				loop: true,
+				navSpeed: 1000,
+				dotsSpeed: 1000,
+				autoplaySpeed: 1000,
+				nav: false,
+				dots: false,
+				navText: ['<i class="ion-chevron-left"></i>', '<i class="ion-chevron-right"></i>'],
+				responsive: {
+					0: {
+						items: 1
+					},
+					480: {
+						items: 1
+					},
+					640: {
+						items: 2
+					},
+					991: {
+						items: 3
+					},
+					1200: {
+						items: 5
+					}
+				}
+			});
+		}
+	});
+	feed.run();
+}); 
+  {% endif %}
+</script>
+
+<script type="text/javascript">
+  $('.content_block').magnificPopup({
+    type: 'image',
+    delegate: 'm',
+    gallery: {
+      enabled : true
+    }
+  });
+</script>
+{% schema %}
+{
+"name": "Instafeed section",
+"class": "insta-section index-section--flush",
+"settings": [
+{
+        "type": "select",
+        "id": "layout",
+        "label": "Select layout design",
+        "options": [
+          {
+            "value": "instafeed",
+            "label": "Design 1"
+          }
+        ],
+    	"default": "instafeed"
+      },
+{
+"type": "checkbox",
+"id": "homepage_instagram_feed",
+"label": "Show Instagram feed",
+"default": true
+},
+{
+"type": "text",
+"id": "insta_title",
+"label": "Title",
+"default": "# PRESIDEN ON INSTAGRAM"
+},
+{
+"type": "text",
+"id": "description",
+"label": "Description",
+"default": "How us how you are styling your Rare pieces on Instagram with the hashtag #Presiden."
+},
+{
+"type": "text",
+"id": "insta_access_token",
+"label": "Access Token",
+"default": "4032644233.1677ed0.c17607b4a50e46b1a13a7a7713af871f",
+"info": "Can be found from http:\/\/instagram.pixelunion.net"
+},
+{
+"type": "text",
+"id": "insta_images_fetch",
+"label": "No of images to fetch",
+"default": "10"
+},
+      {
+         "type": "checkbox",
+         "id": "fullwidth",
+         "label": "Set Div fullwidth?",
+         "default": true
+      }
+],
+"blocks": [
+],
+"presets": [{
+"name": "Instagram Feed",
+"category": "Feature Sections"
+}]
+}
+{% endschema %}

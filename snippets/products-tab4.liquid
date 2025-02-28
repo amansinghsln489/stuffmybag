@@ -1,0 +1,110 @@
+
+{% capture icon %}{{ section.settings.heading_icon }},{{ section.settings.heading_icon2 }}{% endcapture %}
+{% assign icon = icon | split: "," %}
+{% capture color %}{{ section.settings.heading_color }},{{ section.settings.heading_color2 }}{% endcapture %}
+{% assign color = color | split: "," %}
+
+<div class="sub-col col-sm-12 col-md-12">
+  <div class="tt_tabsproduct_module module-nav2  tabs-category-slider module-title-style2 bestseller-products-slider" id="product_module_{{ coll }}">
+    <div class="module-title" >
+      <h2>{{ section.settings.heading }}</h2>
+      <ul class="tab-heading tabs-categorys">
+        {% capture tabs %}{{ section.settings.products_tab_collection1 }},{{ section.settings.products_tab_collection2 }},{{ section.settings.products_tab_collection3 }},{{ section.settings.products_tab_collection4 }},{{ section.settings.products_tab_collection5 }}{% endcapture %}
+        {% assign tabs_collection = tabs | split: "," %}
+        {% for coll in tabs_collection %}
+        {% assign title = collections[coll].title %}
+        <li>
+          <a data-toggle="pill" href="#tab-{{ forloop.index0 }}{{section.id}}">{{ title }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="box-module">
+      <div class="col-image">
+      </div>
+      <div class="col-product">
+        <div class="tt-product ">
+          <div class="tab-content">
+            {% for coll in tabs_collection %}
+            <div class="tab-container-{{section.id}} owl-carousel owl-theme tab-pane fade" id="tab-{{ forloop.index0 }}{{section.id}}" >
+              {% assign coll_products = collections[coll].products %}
+              {% if section.settings.listing_rows == '1' %}
+              {% for product in coll_products limit:section.settings.products_tab_count %}
+              <div class="row_items">
+                {% include 'product-grid-item' %}
+              </div>
+              {% endfor %}
+              {% else %}
+              <div class="row_items">
+                {% for product in coll_products limit:section.settings.products_tab_count %}
+                {% include 'product-grid-item' %}
+                {% assign ind = forloop.index | times: 1 | modulo:section.settings.no_of_products %}
+                {% if  ind == 0 and forloop.last == false %}
+              </div><div class="row_items">
+              {% endif %}
+              {% endfor %}
+              </div>
+              {% endif %}
+
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('a[href="#tab-0{{section.id}}"]').trigger( "click" );
+        $(".tab-container-{{section.id}}").owlCarousel({
+        items: 5,
+        loop:  false ,
+        margin:  20 ,
+        nav:  true ,
+        dots:  false ,
+        autoplay:   false ,
+        autoplayTimeout:  1000 ,
+        autoplayHoverPause: true,
+        autoplaySpeed:  1000 ,
+        navSpeed:  1000 ,
+        dotsSpeed:  1000 ,
+        lazyLoad: true,
+        responsive:{
+        0:{
+        items: 1,
+        nav: false
+        },
+        480:{
+        items: 2,
+        nav: false
+        },
+        768:{
+        items: 3
+        },
+        992:{
+        items: 4
+        },
+        1200:{
+        items: 5
+        },
+        },
+        onInitialized: function() {
+        owlAction();
+      },
+        onTranslated: function() {
+          owlAction();
+        }
+    });
+
+
+    function owlAction() {
+      $(".tab-container-{{section.id}} .owl-item").removeClass('first');
+        $(".tab-container-{{section.id}} .owl-item").removeClass('last');
+        $(".tab-container-{{section.id}} .owl-item").removeClass('before-active');
+        $(".tab-container-{{section.id}} .owl-item.active:first").addClass('first');
+        $(".tab-container-{{section.id}} .owl-item.active:last").addClass('last');
+        $('.tab-container-{{section.id}} .owl-item.active:first').prev().addClass('before-active');
+        }
+        });
+  </script>
+</div>

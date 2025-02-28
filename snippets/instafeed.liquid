@@ -1,0 +1,15 @@
+{{ 'instafeed.min.js' | asset_url | script_tag }}
+<div id="instagram_block_home" class="instagram-container occountdown_module ">
+  <div class="module-title">
+    {% if section.settings.insta_title != blank%}
+    <h2>{{ section.settings.insta_title }}</h2>
+    {% endif %}
+    {% if section.settings.description != blank %}  
+    <div class="text-title">
+      <p>{{ section.settings.description }}</p>
+    </div>
+    {% endif %}
+  </div>
+  <div class="content_block owl-carousel owl-theme" id="instafeed">
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<div role="menu" id="pt_custommenu" class="pt_custommenu">
+  {% if c == true %}
+  <div class="container">
+  {% endif %}
+
+  {% assign category_count = 0 %}
+  {% for link in linklists[section.settings.header_menu_1].links %}
+    {% if category_count < 6 %}
+      {% assign child_list_handle = link.title | handleize %}
+      {% assign megamenu = false %}
+
+      {% for block in section.blocks %}
+        {% if block.type == 'megamenu' and child_list_handle == block.settings.mega_menu %}
+          {% include 'mega-menu' %}
+          {% assign megamenu = true %}
+        {% endif %}
+      {% endfor %}
+
+      {% if megamenu == false %}
+        {% if linklists[child_list_handle].links != blank %}
+          <div class="pt_menu_cms pt_menu nav-{{ forloop.index }} pt_menu_had_child {% if link.active %} act{% endif %}">
+            <div class="parentMenu">
+              <a href="{{ link.url }}">
+                <span>{{ link.title }}</span>
+              </a>
+            </div>
+            <div class="popup" style="display: none; width: 1228px;">
+              <div class="inner-popup">
+                <div class="block1">
+                  <div class="column first col1">
+                    <div class="itemMenu level1">
+                      {% assign size = linklists[child_list_handle].links | size %}
+                      {% if size > 10 %}
+                        {% assign fsize = size | divided_by: 2 | ceil %}
+                      {% endif %}
+                      {% for childlink in linklists[child_list_handle].links %}
+                        <a class="itemMenuName level1 act nochild" href="{{ childlink.url }}" style="padding-bottom:10px;"><span>{{ childlink.title | escape }}</span></a>
+                        {% if forloop.index == fsize %}
+                    </div>
+                  </div>
+                  <div class="column last col1">
+                    <div class="itemMenu level1">
+                      {% endif %}
+                      {% endfor %}
+                    </div>
+                  </div>
+                  <div class="clearBoth"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% else %}
+          <div {% if link.title contains 'Home' %}id="pt_menu_home"{% endif %} class="pt_menu pt_menu_no_child {% if link.active %} act{% endif %}">
+            <div class="parentMenu">
+              <a href="{{ link.url }}">
+                <span>{{ link.title }}</span>
+              </a>
+            </div>
+          </div>
+        {% endif %}
+      {% endif %}
+
+      {% assign category_count = category_count | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+
+  {% if c == true %}
+  </div>
+  {% endif %}
+</div>

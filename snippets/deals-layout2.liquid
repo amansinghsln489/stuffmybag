@@ -1,0 +1,77 @@
+<div class="tt_product_module deal2 multi-rows module-nav2 occountdown_module" id="product_module{{section.id}}">
+  <div class="module-title">
+    <h2>{{ section.settings.heading }}</h2>
+  </div>  
+  <div class="box-module">
+    <div class="col-image">
+    </div>
+    <div class="col-product">
+      <div class="tt-product owl-carousel owl-theme ">
+        {% if section.blocks.size > 0 %}
+        <div class="row_items">
+          {% for block in section.blocks %}
+          {% assign product = all_products[block.settings.product_deal] %}
+          {% include 'product-grid-item-deal2' %}
+          {% assign ind = forloop.index | times: 1 | modulo:2 %}
+          {% if  ind == 0 and forloop.last != true %}
+        </div><div class="row_items">
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#product_module{{section.id}} .tt-product").owlCarousel({
+      loop:  false ,
+      margin:  0 ,
+      nav:  true ,
+      dots:  false ,
+      autoplay:   false ,
+      autoplayTimeout:  1000 ,
+      autoplayHoverPause: true,
+      autoplaySpeed:  1000 ,
+      navSpeed:  1000 ,
+      dotsSpeed:  1000 ,
+      lazyLoad: true,
+
+      responsive:{
+      0:{
+      items: 1,
+      nav: false
+      },
+      480:{
+      items: 1,
+      nav: false
+      },
+      768:{
+      items: 1
+      },
+      992:{
+      items: 2
+      },
+      1200:{
+      items: 2
+      },
+      },
+      onInitialized: function() {
+      owlAction();
+    },
+      onTranslated: function() {
+        owlAction();
+      }
+  });
+  function owlAction() {
+    $("#product_module{{section.id}} .owl-item").removeClass('first');
+      $("#product_module{{section.id}} .owl-item").removeClass('last');
+      $("#product_module{{section.id}} .owl-item").removeClass('before-active');
+      $("#product_module{{section.id}} .owl-item.active:first").addClass('first');
+      $("#product_module{{section.id}} .owl-item.active:last").addClass('last');
+      $('#product_module{{section.id}} .owl-item.active:first').prev().addClass('before-active');
+      }
+      });
+</script>
+<!-- sub-col -->

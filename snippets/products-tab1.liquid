@@ -1,0 +1,142 @@
+<div class="sub-col col-sm-12 col-md-12">
+  <div
+    class="tt_tabsproduct_module multi-rows module-nav2  tabs-category-slider thumb-module tabs-style2"
+    id="product_module{{section.id}}"
+  >
+    <div
+      class="module-title"
+      {% if section.settings.heading_color != '#49d292' %}
+        style="border-color: {{section.settings.heading_color}};"
+      {% endif %}
+    >
+      {% if section.settings.heading != blank %}
+        <h2
+          {% if section.settings.heading_color != '#49d292' %}
+            style="background-color: {{section.settings.heading_color}};"
+          {% endif %}
+        >
+          {{ section.settings.heading }}
+        </h2>
+      {% endif %}
+      <ul class="tab-heading tabs-categorys">
+        {% capture tabs %}{{ section.settings.products_tab_collection1 }},{{ section.settings.products_tab_collection2 }},{{ section.settings.products_tab_collection3 }},{{ section.settings.products_tab_collection4 }},{{ section.settings.products_tab_collection5 }}{% endcapture %}
+        {% assign tabs_collection = tabs | split: ',' %}
+        {% for coll in tabs_collection %}
+          {% assign title = collections[coll].title %}
+          <li>
+            <a data-toggle="pill" href="#tab-{{ forloop.index0 }}{{section.id}}">{{ title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="box-module">
+      <div class="col-image">
+        <div class="banner-static">
+          <div class="image">
+            {% if section.settings.link != blank %}
+              <a href="{{ section.settings.link }}" {{ section.shopify_attributes }}>
+            {% endif %}
+            {% if section.settings.image != blank %}
+              <img src="{{ section.settings.image | img_url: '270x494' }}" alt="" class="">
+            {% endif %}
+            {% if section.settings.link != blank %}
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="col-product">
+        <div class="tt-product ">
+          <div class="tab-content">
+            {% for coll in tabs_collection %}
+              {% assign coll_products = collections[coll].products %}
+              <div
+                class="tab-container-{{section.id}} owl-carousel owl-theme tab-pane fade"
+                id="tab-{{ forloop.index0 }}{{section.id}}"
+              >
+                {% if section.settings.listing_rows == '1' %}
+                  {% for product in coll_products limit: section.settings.products_tab_count %}
+                    <div class="row_items">
+                      {% include 'product-grid-item-tab' %}
+                    </div>
+                  {% endfor %}
+                {% else %}
+                  <div class="row_items">
+                    {% for product in coll_products limit: section.settings.products_tab_count %}
+                      {% include 'product-grid-item-tab' %}
+                      {% assign ind = forloop.index | times: 1 | modulo: section.settings.listing_rows %}
+                      {% if ind == 0 %}
+                        </div>
+                        <div class="row_items">
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+                <!-- productTabContent -->
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('a[href="#tab-1{{section.id}}"]').trigger( "click" );
+        $(".tab-container-{{section.id}}").owlCarousel({
+        items: 2,
+        loop:  false ,
+        margin:  0 ,
+        nav:  true ,
+        dots:  false ,
+        autoplay:   false ,
+        autoplayTimeout:  1000 ,
+        autoplayHoverPause: true,
+        autoplaySpeed:  1000 ,
+        navSpeed:  1000 ,
+        dotsSpeed:  1000 ,
+        lazyLoad: true,
+        responsive:{
+        0:{
+        items: 1,
+        nav: false
+        },
+        480:{
+        items: 1,
+        nav: false
+        },
+        768:{
+        items: 1
+        },
+        992:{
+        items: 2
+        },
+        1200:{
+        items: 2
+        },
+        },
+        onInitialized: function() {
+        owlAction();
+      },
+        onTranslated: function() {
+          owlAction();
+        }
+    });
+    function owlAction() {
+      $(".tab-container-{{section.id}} .owl-item").removeClass('first');
+        $(".tab-container-{{section.id}} .owl-item").removeClass('last');
+        $(".tab-container-{{section.id}} .owl-item").removeClass('before-active');
+        $(".tab-container-{{section.id}} .owl-item.active:first").addClass('first');
+        $(".tab-container-{{section.id}} .owl-item.active:last").addClass('last');
+        $('.tab-container-{{section.id}} .owl-item.active:first').prev().addClass('before-active');
+        }
+        });
+  </script>
+  {% if section.settings.heading_icon != '\f465' %}
+    <style type="text/css">
+      #product_module{{section.id}}.tabs-style2 .module-title h2:before {
+        content: "{{section.settings.heading_icon}}";
+      }
+    </style>
+  {% endif %}
+</div>

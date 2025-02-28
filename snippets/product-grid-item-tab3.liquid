@@ -1,0 +1,70 @@
+{% unless current_collection %}
+  {% assign current_collection = collection %}
+{% endunless %}
+
+{% assign on_sale = false %}
+{% if product.compare_at_price > product.price %}
+  {% assign on_sale = true %}
+{% endif %}
+
+{% assign sold_out = true %}
+{% if product.available %}
+  {% assign sold_out = false %}
+{% endif %}
+
+{% comment %}
+  Select the product image size from settings.
+{% endcomment %}
+{% assign img_size = settings.img_size_grid %}
+<div class="product-layout list-style ">
+  <div class="product-thumb transition">
+    <div class="item">
+      <div class="item-inner">
+        <div class="image images-container">
+          <a class="product-image" href="{{ product.url }}">
+            <img
+              class="img-responsive"
+              src="{{ product.featured_image.src | img_url: img_size }}"
+              alt="{{ product.featured_image.alt | escape }}"
+            >
+            {% comment %}<img class="image2" src="{{ product.images.last | product_img_url: img_size }}" alt="{{ product.images.last.alt | escape }}">{% endcomment %}
+          </a>
+          <div class="quick-view"></div>
+        </div>
+        <!-- images-container -->
+        <div class="caption">
+          <div class="des-info">
+            <p class="manufacture-product">
+              {{ product.vendor | link_to_vendor }}
+            </p>
+            <h4 class="product-name">
+              <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
+            </h4>
+
+            <div class="ratings">
+              <div class="rating-box">
+                {% include 'review' %}
+              </div>
+            </div>
+            <div class="price-box">
+              {% if product.compare_at_price > product.price %}
+                <p class="special-price">
+                  <span class="price">{{ product.price | money }}</span>
+                </p>
+                <p class="old-price">
+                  <span class="price">{{ product.compare_at_price_max | money }}</span>
+                </p>
+              {% else %}
+                <p class="regular-price">
+                  <span class="price">{{ product.price | money }}</span>
+                </p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <!-- des-container -->
+        <!-- item-inner -->
+      </div>
+    </div>
+  </div>
+</div>

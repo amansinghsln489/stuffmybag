@@ -1,0 +1,79 @@
+<div class="main-row {% if section.settings.fullwidth == true %}full-width{% endif  %}" data-section-id="{{ section.id }}">
+  <div class="container">
+    <div class="row">
+      <div class="main-col col-sm-12 col-md-12">
+        <div class="row sub-row">
+          <div class="sub-col col-sm-12 col-md-12">
+            {% include section.settings.layout %}
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Service Boxes section",
+  "max_blocks": 4,
+  "settings": [
+	{
+        "type": "select",
+        "id": "layout",
+        "label": "Select layout design",
+        "options": [
+            {
+              "value": "feature-service1",
+              "label": "Design 1"
+            },
+			{
+              "value": "feature-service2",
+              "label": "Design 2"
+            }
+          ]	
+    },
+	{
+        "type": "checkbox",
+        "id": "fullwidth",
+        "label": "Set Div fullwidth?",
+        "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "box",
+      "name": "Feature box",
+      "settings": [
+        {
+          "type": "text",
+          "id": "feature_service_icon",
+          "label": "Image",
+		  "default": "zmdi zmdi-replay-30",
+		  "info": "Get icons from http:\/\/http://ionicons.com\/cheatsheet.html"
+		},
+        {
+          "type": "text",
+          "id": "feature_service_title",
+          "label": "Feature Title"
+        },
+        {
+          "type": "textarea",
+          "id": "feature_service_description",
+          "label": "Feature description"
+        }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Service box section",
+    "category": "Feature Sections",
+    "blocks": [
+      {
+        "type": "box"
+      },
+      {
+        "type": "box"
+      }
+    ]
+  }]
+}
+{% endschema %}

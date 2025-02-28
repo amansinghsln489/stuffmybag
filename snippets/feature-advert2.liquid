@@ -1,0 +1,32 @@
+<div class="banner-static static-top-volga4">
+  <div class="row">
+    {% if section.blocks.size > 0 %}
+    {% for block in section.blocks limit:2 %}
+    <div class="col col-sm-6 col-xs-12">
+      <div class="image">
+        {% if block.settings.link != blank %}          
+        <a href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
+          {% endif %}
+          {% if block.settings.image != blank %}
+          <img src="{{ block.settings.image | img_url: 'master' }}" class="" alt=""/>
+          {% endif %}
+          {% if block.settings.link != blank %}          
+        </a>
+        {% endif %}
+      </div>
+      <div class="text-content">
+        {% if block.settings.heading != blank %} 
+        <h2>{{ block.settings.heading }}</h2>
+        {% endif %}
+        {% if block.settings.description != blank %} 
+        <h2>{{ block.settings.description }}</h2>
+        {% endif %}
+        {% if block.settings.link_text != blank %}          
+        <a href="{{ block.settings.link }}" class="" {{ block.shopify_attributes }}>{{ block.settings.link_text }}</a>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+  </div>
+</div>

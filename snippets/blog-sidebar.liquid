@@ -1,0 +1,66 @@
+<!--Sidebar start -->
+<div class="left-blog-sidebar">
+
+  <!--Blog search start-->
+  <div class="blog-sidebar fix">
+    <div class="sidebar-widget-title">
+      <h4><span>{{ 'layout.search_bar.title' | t }}</span></h4>
+    </div>
+    <form action="/search" method="POST" role="search" id="blog-search">
+      <input type="hidden" name="type" value="product">
+      <input autocomplete="off" type="text" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'layout.search_bar.placeholder_blog' | t }}" aria-label="{{ 'layout.search_bar.placeholder_blog' | t }}">
+      <button class="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+  <!--End blog search-->
+
+  <!--Sidebar recent post start -->
+  <div class="blog-sidebar post fix">
+    <div class="sidebar-widget-title">
+      <h4><span>{{ 'blogs.sidebar.recent_articles' | t }}</span></h4>
+    </div>
+    <ul>
+      {% for article in blog.articles limit:6 %}
+      <li>
+        <div class="post-thumb">
+          {% if article.image %}
+          <a href="{{ article | img_url: 'master' }}">
+            <img src="{{ article | img_url: 'compact' }}">
+          </a>
+          {% endif %}
+        </div>
+        <div class="post-info">
+          <a href="{{ article.url }}">{{ article.title }}</a>
+          <span>{{ article.published_at | date: format: 'month_day_year' }}</span>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <!--End sidebar recent post -->
+
+  <!--Start sidebar tags -->
+  <div class="blog-sidebar fix">
+    <div class="sidebar-widget-title">
+      <h4><span>{{ 'blogs.sidebar.tags_cloud' | t }}</span></h4>
+    </div>
+    <ul class="tags-list">
+      {% for tag in blog.all_tags %}
+      <li>{{ tag | link_to_tag: tag }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  <!--End sidebar tags -->
+
+  {% if settings.show_sidebar_ad %}
+  <div class="blog-sidebar fix">
+    <a href="{{ settings.blog_sidebar_link }}" class="post-thumbnail">
+      <img src="{{ 'blog_sidebar_ad.jpg' | asset_url }}" alt="" />
+    </a>
+  </div>
+  <!-- End Widget -->
+  {% endif %}
+</div>
+<!--End sidebar -->
+
+

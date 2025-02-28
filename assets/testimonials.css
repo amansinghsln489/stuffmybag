@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+.testimonial-author{
+	font-family: 'Pacifico', cursive;
+	font-size: 20px;
+	color: #fff;
+	text-transform: capitalize;
+}

@@ -1,0 +1,209 @@
+<div class="col-sm-6 block-1 owl-style2">
+  {% assign featured_img_src = current_variant.featured_image.src | default: product.featured_image.src %}
+  {% assign featured_img_alt = current_variant.featured_image.alt | default: product.featured_image.alt %}
+  <div class="thumbnails hidden-xs">
+    {% for image in product.images %}
+      <a
+        class="thumbnail"
+        href="javascript:void(0);"
+        data-image="{{ image.src | img_url: product_img_size, crop: 'center' }}"
+        {% if enable_zoom %}
+          data-zoom-image="{{ image.src | img_url: product_img_size }}"
+        {% endif %}
+        title="{{ product.title }}"
+      >
+        <img
+          id="ProductPhotoImg"
+          src="{{ image.src | img_url: product_img_size, crop: 'center' }}"
+          alt="{{ image.alt | escape }}"
+        >
+      </a>
+    {% endfor %}
+  </div>
+  <div class="thumbnails visible-xs">
+    <a id="ProductPhoto" class="thumbnail" title="{{ product.title }}" onclick="return false;">
+      <img
+        id="ProductPhotoImg"
+        src="{{ featured_img_src | img_url: product_img_size, crop: 'center' }}"
+        {% if enable_zoom %}
+          data-zoom-image="{{ featured_img_src | img_url: 'master' }}"
+        {% endif %}
+        title="{{ featured_img_alt }}"
+        alt="{{ featured_img_alt }}"
+      >
+    </a>
+  </div>
+
+  <div class="image-additional-container owl-style3 visible-xs">
+    <div class="thumbnails-additional owl-carousel owl-theme" id="gallery_01">
+      {% if product.description contains '[video]' %}
+        <a
+          class="thumbnail popup-youtube"
+          href="{{ product.description | split:'[video]' | last | split :'[/video]' | first }}"
+        >
+          <img src="{{ 'video.png' | asset_img_url: product_img_size }}" alt="">
+        </a>
+      {% endif %}
+      {% for image in product.images %}
+        <a
+          class="thumbnail {% if forloop.first %}current-additional{% endif %}"
+          style="display: none"
+          href="javascript:void(0);"
+          data-image="{{ image.src | img_url: product_img_size, crop: 'center' }}"
+          {% if enable_zoom %}
+            data-zoom-image="{{ image.src | img_url: 'master' }}"
+          {% endif %}
+          title="{{ product.title }}"
+        >
+          <img src="{{ image.src | img_url: product_img_size }}" alt="{{ image.alt | escape }}">
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+  <!-- end wrapper-img-additional -->
+</div>
+<div class="col-sm-6 block-2 product-info-main" id="desc">
+  <h1 class="product-name" itemprop="name">{{ product.title }}</h1>
+  <div class="ratings">
+    <div class="rating-box">
+      {% include 'review' %}
+    </div>
+  </div>
+  <!-- end-rating -->
+  {% if product.selected_or_first_available_variant.price < product.selected_or_first_available_variant.compare_at_price
+    and settings.product_show_compare_at_price == true
+  %}
+    <li class="price-box box-special">
+      <p class="special-price" id="productPrice">
+        <span class="price">{{ product.selected_or_first_available_variant.price | money }}</span>
+      </p>
+      <p class="old-price" id="comparePrice">
+        <span class="price">{{ product.selected_or_first_available_variant.compare_at_price | money }}</span>
+      </p>
+    </li>
+  {% else %}
+    <li class="price-box box-regular">
+      <span class="regular-price">
+        <span class="price" id="productPrice">{{ product.selected_or_first_available_variant.price | money }}</span>
+      </span>
+    </li>
+  {% endif %}
+  <div class="box-options">
+    <ul class="list-unstyled">
+      {% if product.description contains '[deal]' %}
+        <li class="deal2 occountdown_module">
+          <div id="Countdown{{product.id}}-" class="box-timer"></div>
+        </li>
+      {% endif %}
+      {% if settings.product_vendor_enable %}
+        <li>
+          {{ 'products.product.brand' | t }}:
+          <a href="#"
+            ><span class="ex-text">{{ product.vendor }}</span></a
+          >
+        </li>
+      {% endif %}
+      <link
+        itemprop="availability"
+        href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}"
+      >
+      <li>
+        {{ 'products.product.availability' | t }}:
+        <span style="" class="ex-text">
+          {% if product.available %}
+            {{ 'products.product.in_stock' | t -}}
+          {%- else %}
+            {{ 'products.product.out_stock' | t -}}
+          {%- endif %}
+        </span>
+      </li>
+    </ul>
+  </div>
+  <p class="short-des">
+    {% if product.description contains '[summary]' %}
+      {{ product.description | split: '[summary]' | last | split: '[/summary]' | first }}
+    {% else %}
+      {% assign product_summary_words = settings.product_summary_words | times: 1 %}
+      {{
+        product.content
+        | split: '[summary]'
+        | first
+        | split: '[video]'
+        | first
+        | split: '[tab]'
+        | first
+        | split: '[deal]'
+        | first
+        | strip_html
+        | truncatewords: product_summary_words
+      }}
+    {% endif %}
+  </p>
+  <div id="product">
+    <form action="/cart/add" method="post" enctype="multipart/form-data" id="form_buy">
+      <div
+        class="form-group"
+        {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+          style="display:none"
+        {% endif %}
+      >
+        <select name="id" id="productSelect" class="form-control">
+          {% for variant in product.variants %}
+            {% if variant.available %}
+              <option
+                {% if variant == product.selected_or_first_available_variant %}
+                  selected="selected"
+                {% endif %}
+                data-sku="{{ variant.sku }}"
+                value="{{ variant.id }}"
+              >
+                {{ variant.title }} - {{ variant.price | money_with_currency }}
+              </option>
+            {% else %}
+              <option disabled="disabled">{{ variant.title }} - {{ 'products.product.sold_out' | t }}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
+        {% if product.available and product.variants.size > 1 %}
+          {% for option in product.options %}
+            {% include 'swatch' with option %}
+          {% endfor %}
+        {% endif %}
+      </div>
+      <div class="form-group">
+        {% if settings.product_quantity_enable %}
+          <label class="control-label" for="Quantity">{{ 'products.product.quantity' | t }}:</label>
+          <div class="quantity-box">
+            <input type="button" id="minus" value="-" class="form-control">
+            <input type="text" name="quantity" value="1" size="2" id="Quantity" class="form-control">
+            <input type="button" id="plus" value="&#43;" class="form-control">
+          </div>
+        {% endif %}
+        {% if settings.product_quantity_message %}
+          <span id="variantQuantity" class="variant-quantity"></span>
+        {% endif %}
+        <button
+          class="button button-cart btn"
+          type="button"
+          id="button-cart"
+          data-loading-text="{{ 'products.product.loading' | t }}"
+        >
+          {{ 'products.product.add_to_cart' | t }}
+        </button>
+        {% include 'product-wishlist2' %}
+      </div>
+    </form>
+    <!-- end-button -->
+  </div>
+  <!-- AddThis Button BEGIN -->
+  <div class="clearfix"></div>
+  <div
+    class="addthis_toolbox addthis_default_style"
+    data-url="http://demo.towerthemes.com/tt_colora/index.php?route=product/product&amp;product_id=48"
+  >
+    <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a> <a class="addthis_button_tweet"></a>
+    <a class="addthis_button_pinterest_pinit"></a> <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-515eeaf54693130e"></script>
+  <!-- AddThis Button END -->
+</div>

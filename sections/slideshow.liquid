@@ -1,0 +1,306 @@
+{% include section.settings.layout_slider %}
+{% schema %}
+{
+  "name": "Slideshow",
+  "class": "index-section index-section--flush",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Auto-rotate slides",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "autoplay_speed",
+      "label": "Change slides every",
+      "options": [
+        { "value": "5000", "label": "5 seconds" },
+        { "value": "6000", "label": "6 seconds" },
+        { "value": "7000", "label": "7 seconds" },
+        { "value": "8000", "label": "8 seconds" },
+        { "value": "9000", "label": "9 seconds" },
+        { "value": "10000", "label": "10 seconds" }
+      ],
+      "default": "10000"
+    },
+	{
+        "type": "select",
+        "id": "layout_slider",
+        "label": "Select page slider",
+        "options": [
+              {
+                "value": "slider-1",
+                "label": "Slider Full"
+              },
+			  {
+                "value": "slider-banner",
+                "label": "Slider + banner"
+              },
+			  {
+                "value": "slider-banner2",
+                "label": "Slider + banner 2"
+              },
+			  {
+                "value": "slider-banner3",
+                "label": "Slider + banner + deals"
+              }
+            ]	
+        },
+		{
+          "type": "checkbox",
+          "id": "fullwidth",
+          "label": "Fullwidth",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Deals Heading",
+          "default": "Hot Deals"
+        }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Slide image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "1920x960px recommended"
+        },
+		{
+        "type": "select",
+        "id": "animation_style",
+        "label": "Select page slider",
+        "options": [
+              {
+              "value": "none",
+              "label": "None"
+              },
+              {
+              "value": "slider-1",
+              "label": "Style 1"
+              },
+              {
+              "value": "slider-2",
+              "label": "Style 2"
+              },
+              {
+              "value": "slider-3",
+              "label": "Style 3"
+              }
+            ],
+        "default": "slider-1"	
+        },
+		{
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+		{
+          "type": "text",
+          "id": "heading_size",
+          "label": "Font size",
+		  "default": "48px"
+        },
+        {
+          "type": "color",
+          "id": "heading_color",
+          "label": "Heading Color",
+          "default": "#fff"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading"
+        },
+		{
+          "type": "text",
+          "id": "subheading_size",
+          "label": "Font size",
+		  "default": "48px"
+        },
+        {
+          "type": "color",
+          "id": "subheading_color",
+          "label": "Subheading Color",
+          "default": "#fff"
+        },		
+		{
+          "type": "textarea",
+          "id": "description",
+          "label": "Slide Description",
+          "info": "Used in slider 1"
+        },
+		{
+          "type": "text",
+          "id": "description_size",
+          "label": "Font size",
+		  "default": "48px"
+        },
+        {
+          "type": "color",
+          "id": "description_color",
+          "label": "Description Color",
+          "default": "#ffc300"
+        },
+		{
+          "type": "text",
+          "id": "slide_link_text",
+          "label": "Link Text"
+        },
+        {
+          "type": "url",
+          "id": "slide_link",
+          "label": "Link URL"
+        },
+		{
+          "type": "color",
+          "id": "link_bg",
+          "label": "Link Button Background",
+		  "default": "#000"
+        },
+        {
+          "type": "color",
+          "id": "link_color",
+          "label": "Link Color",
+          "default": "#fff"
+        },
+        {
+          "type": "header",
+          "content": "Text Position Settings"
+        },
+        {
+          "type": "text",
+          "id": "top",
+          "label": "Top",
+		  "default": "50%"
+        },
+        {
+          "type": "text",
+          "id": "right",
+          "label": "right",
+		  "default": "0%"
+        },
+        {
+          "type": "text",
+          "id": "left",
+          "label": "Left",
+		  "default": "0%"
+        },
+        {
+          "type": "text",
+          "id": "width",
+          "label": "Width",
+		  "default": "100%"
+        },
+        {
+          "type": "text",
+          "id": "float",
+          "label": "float",
+		  "default": "left"
+        }
+      ]
+    },
+	{
+      "type": "video",
+      "name": "Video",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "1820x785px recommended for preload image"
+        },
+		{
+        "type": "select",
+        "id": "video_type",
+        "label": "Select video type",
+        "options": [
+              {
+              "value": "youtube",
+              "label": "Youtube"
+              },
+              {
+              "value": "vimeo",
+              "label": "Vimeo"
+              },
+              {
+              "value": "mp4",
+              "label": "Mp4"
+              }
+            ],
+        "default": "youtube"	
+        },
+		{
+          "type": "text",
+          "id": "video_src",
+          "label": "Video Src",
+		  "default": "bLwl0gRbyrk",
+		  "info": "Add src id for youtube/vimeo and full link for video file"
+        },
+		{
+          "type": "checkbox",
+          "id": "video_autoplay",
+          "label": "Autoplay",
+          "default": true
+        }
+      ]
+    },
+	{
+      "type": "sideimage",
+      "name": "Side image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "775 x 386px recommended"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link URL"
+        }
+      ]
+    },
+	{
+         "type": "deal",
+         "name": "deal product",
+         "settings": [
+            {
+               "type": "product",
+               "id": "product_deal",
+               "label": "Product"
+            },
+            {
+               "type": "text",
+               "id": "expiry_deal",
+               "label": "Expiry",
+               "info": "(yyyy,mm,dd)"
+            }
+         ]
+      }
+  ],
+  "presets": [{
+    "name": "Slideshow",
+    "category": "Image",
+    "settings": {
+      "autoplay": true,
+      "autoplay_speed": "5000"
+    },
+    "blocks": [
+      {
+        "type": "image"
+      },
+      {
+        "type": "image"
+      }
+    ]
+  }]
+}
+{% endschema %}

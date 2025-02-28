@@ -1,0 +1,89 @@
+<div class="tt_product_module occountdown_module module-nav2 thumb-module thumb-module2" id="product_module{{section.id}}">
+  <div class="module-title">
+    <h2>{{ section.settings.heading }}</h2>
+  </div>  
+  <div class="box-module">
+    {% if section.settings.image != blank %}
+    <div class="col-image">
+      <div class="banner-static">
+        <div class="image">
+          {% if section.settings.link != blank %}          
+          <a href="{{ section.settings.link }}" {{ section.shopify_attributes }}>
+            {% endif %}
+            {% if section.settings.image != blank %}
+            <img src="{{ section.settings.image | img_url: '270x365' }}" alt="" class="" />
+            {% endif %}
+            {% if section.settings.link != blank %}          
+          </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    <div class="col-product" {% if section.settings.image == blank %} style="width:100%;"{% endif %}>
+      <div class="tt-product owl-carousel owl-theme ">
+        {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+        {% assign product = all_products[block.settings.product_deal] %}
+        <div class="row_items ">
+          {% include 'product-grid-item-deal' %}
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#product_module{{section.id}} .tt-product").owlCarousel({
+      loop:  false ,
+      margin:  20 ,
+      nav:  true ,
+      dots:  false ,
+      autoplay:   false ,
+      autoplayTimeout:  1000 ,
+      autoplayHoverPause: true,
+      autoplaySpeed:  1000 ,
+      navSpeed:  1000 ,
+      dotsSpeed:  1000 ,
+      lazyLoad: true,
+
+      responsive:{
+      0:{
+      items: 1,
+      nav: false
+      },
+      480:{
+      items: 2,
+      nav: false
+      },
+      768:{
+      items: 2
+      },
+      992:{
+      items: 3
+      },
+      1200:{
+      items: 4
+      },
+      },
+      onInitialized: function() {
+      owlAction();
+    },
+      onTranslated: function() {
+        owlAction();
+      }
+  });
+  function owlAction() {
+    $("#product_module{{section.id}} .owl-item").removeClass('first');
+      $("#product_module{{section.id}} .owl-item").removeClass('last');
+      $("#product_module{{section.id}} .owl-item").removeClass('before-active');
+      $("#product_module{{section.id}} .owl-item.active:first").addClass('first');
+      $("#product_module{{section.id}} .owl-item.active:last").addClass('last');
+      $('#product_module{{section.id}} .owl-item.active:first').prev().addClass('before-active');
+      }
+      });
+</script>
+
+<!-- sub-col -->

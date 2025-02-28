@@ -1,0 +1,55 @@
+<div class="navbar">
+  <div id="navbar-inner" class="navbar-inner navbar-inactive">
+    <div class="menu-mobile">
+      <a class="btn btn-navbar navbar-toggle">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <span class="brand navbar-brand">{{ 'homepage.navigation.categories' | t }}</span>
+    </div>
+    <ul role="menu" id="ma-mobilemenu" class="mobilemenu nav-collapse collapse">
+      {% for link in linklists[section.settings.header_menu_1].links %}
+        {% assign child_list_handle = link.title | handleize %}
+        {% assign megamenu = false %}
+
+        {% for block in section.blocks %}
+          {% if block.type == 'megamenu' %}
+            {% if child_list_handle == block.settings.mega_menu %}
+              {% include 'mega-menu-mob' %}
+              {% assign megamenu = true %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+
+        {% if megamenu == false %}
+          {% if linklists[child_list_handle].links != blank %}
+            <li>
+              <span class=" button-view1 collapse1">
+                <a href="{{link.url}}">{{ link.title }}</a>
+              </span>
+              <ul class="level2">
+                {% for childlink in linklists[child_list_handle].links %}
+                  <li>
+                    <span class="button-view2 no-close">
+                      <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                    </span>
+                    <ul class="level3"></ul>
+                  </li>
+                {% endfor %}
+              </ul>
+            </li>
+          {% else %}
+            <li>
+              <span class=" button-view1 no-close">
+                <a href="{{link.url}}">{{ link.title }}</a>
+              </span>
+              <ul class="level2"></ul>
+            </li>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+<!-- end menu area -->

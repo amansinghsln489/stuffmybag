@@ -1,0 +1,196 @@
+{% unless current_collection %}
+  {% assign current_collection = collection %}
+{% endunless %}
+
+{% assign on_sale = false %}
+{% if product.compare_at_price > product.price %}
+  {% assign on_sale = true %}
+{% endif %}
+
+{% assign sold_out = true %}
+{% if product.available %}
+  {% assign sold_out = false %}
+{% endif %}
+
+{% comment %}
+  Select the product image size from settings.
+{% endcomment %}
+{% assign img_size = settings.img_size_grid %}
+<div class="product-layout {% if list == true %} list-style {% else %} grid-style {% endif %}">
+  <div class="product-thumb transition">
+    <div class="item">
+      <div class="item-inner">
+        <div class="image images-container">
+          {% assign product_created_at = product.created_at | date: '%s' %}
+          {% assign time_ago = 'now' | date: '%s' | minus: product_created_at | divided_by: 86400 %}
+          {% assign product_new_time = settings.product_new_time | times: 1 %}
+          {% if time_ago < product_new_time %}
+            <div class="label-product label_new">
+              <span>{{ 'products.product.new' | t }}</span>
+            </div>
+          {% endif %}
+          {% if on_sale %}
+            <div class="label-product label_sale">
+              <span
+                >-
+                {{-
+                  product.compare_at_price
+                  | minus: product.price
+                  | times: 100.0
+                  | divided_by: product.compare_at_price
+                  | round
+                -}}
+                %</span
+              >
+            </div>
+          {% endif %}
+          {% if sold_out %}
+            <div class="label-product label_sale">
+              <span>{{ 'products.product.sold_out' | t }}</span>
+            </div>
+          {% endif %}
+          {% if section.settings.product_grid_img_carousel == true %}
+            <div
+              id="myCarousel{{ section.id }}-{{product.id}}"
+              class="carousel slide img-other"
+              data-ride="carousel"
+              data-interval="false"
+            >
+              <!-- product inside carousel -->
+              <div class="carousel-inner" role="listbox">
+                {% for image in product.images %}
+                  <div class="item {% if forloop.first == true %}active{% endif %}">
+                    <a class="product-image" title="{{ product.title }}" href="{{ product.url | within: collection }}">
+                      <img class="img-responsive lazy" src="{{ image.src | img_url: img_size }}" alt="">
+                    </a>
+                  </div>
+                {% endfor %}
+              </div>
+              <!-- Left and right controls -->
+              <a
+                class="left carousel-control"
+                href="#myCarousel{{ section.id }}-{{product.id}}"
+                role="button"
+                data-slide="prev"
+              >
+                <i class="fa fa-angle-left"></i>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a
+                class="right carousel-control"
+                href="#myCarousel{{ section.id }}-{{product.id}}"
+                role="button"
+                data-slide="next"
+              >
+                <i class="fa fa-angle-right"></i>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          {% else %}
+            <a class="product-image" href="{{ product.url }}">
+              <img
+                class="img-responsive"
+                src="{{ product.featured_image.src | img_url: img_size }}"
+                alt="{{ product.featured_image.alt | escape }}"
+              >
+              {% comment %}<img class="image2" src="{{ product.images.last | product_img_url: img_size }}" alt="{{ product.images.last.alt | escape }}">{% endcomment %}
+            </a>
+          {% endif %}
+          <div class="quick-view">
+            <button
+              class="button btn-quickview quickview"
+              type="button"
+              title=""
+              data-toggle="modal"
+              data-target="#productModal"
+              data-productinfo="{{ product | json | escape}}"
+              data-original-title="{{ 'products.product.quickview' | t }}"
+            >
+              <i class="icon ion-eye"></i><span>{{ 'products.product.quickview' | t }}</span>
+            </button>
+          </div>
+          <div id="Countdown{{product.id}}-" class="box-timer"></div>
+        </div>
+        <!-- images-container -->
+        <div class="caption">
+          <div class="des-info">
+            <p class="manufacture-product">
+              {{ product.vendor | link_to_vendor }}
+            </p>
+            <h4 class="product-name">
+              <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
+            </h4>
+            {% assign average_review = product.metafields.trustshop_reviews.stars_review.value.average_review
+              | default: 0
+              | plus: 0
+            %}
+            {% assign total_review = product.metafields.trustshop_reviews.stars_review.value.total_review
+              | default: 0
+              | plus: 0
+            %}
+            {% if average_review > 0 and total_review > 0 %}
+              <div
+                class="trustshop-collection-rating--item"
+                rating-value="{{ average_review }}"
+                rating-count="{{ total_review }}"
+              ></div>
+            {% endif %}
+            <div class="ratings">
+              <div class="rating-box">
+                {% include 'review' %}
+              </div>
+            </div>
+            <div class="price-box">
+              {% if product.compare_at_price > product.price %}
+                <p class="special-price">
+                  <span class="price">{{ product.price | money }}</span>
+                </p>
+                <p class="old-price">
+                  <span class="price">{{ product.compare_at_price_max | money }}</span>
+                </p>
+              {% else %}
+                <p class="regular-price">
+                  <span class="price">{{ product.price | money }}</span>
+                </p>
+              {% endif %}
+            </div>
+          </div>
+          <div class="action-links">
+            <button
+              class="button btn-cart"
+              type="button"
+              data-toggle="tooltip"
+              data-loading-text="{{ 'products.product.loading' | t }}"
+              title="{{ 'products.product.add_to_cart' | t }}"
+              onclick="cart.add('{{ product.variants.first.id }}');"
+            >
+              <span>{{ 'products.product.add_to_cart' | t }}</span>
+            </button>
+            {% include 'product-wishlist2' %}
+            <button
+              class="button btn-compare"
+              type="button"
+              data-toggle="tooltip"
+              title="{{ 'products.product.view_details' | t }}"
+              onclick="location.href='{{ product.url }}';"
+            >
+              <span>{{ 'products.product.view_details' | t }}</span>
+            </button>
+          </div>
+        </div>
+        <!-- des-container -->
+        <!-- item-inner -->
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#Countdown{{product.id}}-').countdown({
+        until: new Date('{{ block.settings.expiry_deal }}'),
+        labels: ['Y', 'M ', 'W', 'D', 'H', 'M', 'S'],
+        labels1: ['Y', 'M ', 'W', 'D', 'H', 'M', 'S'],
+        });
+      //$('#Countdown40-').countdown('pause');
+    });
+  </script>
+</div>

@@ -1,0 +1,135 @@
+<div class="box-cart">
+  <ul class="box box-right">
+    <li class="setting">
+      <div class="btn-group">
+        <button class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+          {{ 'homepage.navigation.my_account' | t }}
+          <i class="fa fa-angle-down"></i>
+        </button>
+        <div class="dropdown-menu" id="top-links">
+          <ul class="ul-account list-unstyled">
+            {% if shop.customer_accounts_enabled %}
+              {% if customer %}
+                <li>
+                  <a href="/account"
+                    ><span>{{ 'homepage.navigation.my_account' | t }}</span></a
+                  >
+                </li>
+                <li>
+                  <a href="/pages/wishlist" id="wishlist-total">
+                    <!-- <i class="ion-android-favorite-outline"></i> -->
+                    <span>{{ 'products.product.add_to_wishlist' | t }}</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/account/logout" id="customer_logout_link"
+                    ><span>{{ 'layout.customer.log_out' | t }}</span></a
+                  >
+                </li>
+              {% else %}
+                <li>
+                  <a href="/account/login" id="customer_login_link"
+                    ><span>{{ 'layout.customer.sign_in' | t }}</span></a
+                  >
+                </li>
+                {% if shop.customer_accounts_optional %}
+                  <li>
+                    <a href="/account/register" id="customer_register_link"
+                      ><span>{{ 'layout.customer.create_account' | t }}</span></a
+                    >
+                  </li>
+                {% endif %}
+              {% endif %}
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div id="cart" class="btn-group btn-block">
+    <button
+      type="button"
+      data-toggle="dropdown"
+      data-loading-text="{{ 'products.product.loading' | t }}"
+      class="btn dropdown-toggle"
+    >
+      <span id="hcart">
+        <i class="ion-bag"></i>
+        <span id="cart-total">{{ cart.item_count }}</span>
+        <!--
+          <span class="mycart">
+            <span>{{ 'cart.general.my_cart' | t }}</span
+            ><span id="total-price" class="total-price">{{ cart.total_price | money }}</span></span
+          >
+        -->
+      </span>
+    </button>
+    {% if cart.item_count < 1 %}
+      <ul class="dropdown-menu pull-right">
+        <li>
+          <p class="text-center cart-empty">{{ 'cart.general.no_items' | t }}</p>
+        </li>
+      </ul>
+    {% else %}
+      <ul class="dropdown-menu pull-right">
+        <li class="has-scroll">
+          <table class="table">
+            <tbody>
+              {% for item in cart.items %}
+                <tr>
+                  <td class="text-center">
+                    <a href="{{ item.url }}">
+                      <img
+                        class="cart-image"
+                        src="{{ item | img_url: '100x116' }}"
+                        alt="{{ item.title | escape }}"
+                        title="{{ item.title | escape }}"
+                      >
+                    </a>
+                  </td>
+                  <td class="text-left info-item">
+                    <a class="cart-name" href="{{ item.url }}">{{ item.product.title }}</a>
+                    <p class="cart-quantity">&times;{{ item.quantity }}</p>
+                    <p class="cart-price">{{ item.line_price | money }}</p>
+                  </td>
+                  <td class="text-center cart-close">
+                    <button
+                      type="button"
+                      onclick="cart.remove('{{ item.variant_id }}');"
+                      title="{{ 'cart.general.remove' | t }}"
+                      class="btn btn-danger btn-xs"
+                    >
+                      <i class="ion-android-close"></i>
+                    </button>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </li>
+        <li>
+          <table class="table">
+            <tbody>
+              <tr>
+                <td class="text-left">
+                  <strong>{{ 'cart.general.subtotal' | t }} :</strong>
+                </td>
+                <td class="text-right">{{ cart.total_price | money }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="text-center cart-button">
+            <a href="/cart">{{ 'cart.general.view_cart' | t }}</a>
+            <a href="/checkout">{{ 'cart.general.checkout' | t }}</a>
+          </p>
+        </li>
+      </ul>
+    {% endif %}
+  </div>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      var total = $('#cart .table .text-right').html();
+      $('#cart .total-price').html(total);
+    });
+  </script>
+</div>

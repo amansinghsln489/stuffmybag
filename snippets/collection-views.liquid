@@ -1,0 +1,9 @@
+{% comment %}
+Toggle between collection.liquid and collection.list.liquid with the
+?view= parameter.
+{% endcomment %}
+<div class="btn-group">
+  <button type="button" id="grid-view" data-view="grid" class="btn {% if template contains 'grid' %} selected{% endif %}" data-toggle="tooltip" title="Grid"  data-view="grid"><i class="icon ion-android-apps"></i></button>
+  <button type="button" id="list-view" data-view="list" class="btn {% unless template contains 'grid' %} selected{% endunless %} " data-toggle="tooltip" title="List"  data-view="list"><i class="icon ion-navicon-round"></i></button>
+</div>
+<!-- Nav tabs -->

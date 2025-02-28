@@ -1,0 +1,62 @@
+<!--Contact Us Area Start-->
+<div class="container">
+  {% include 'breadcrumb' %} 
+  <div class="row">
+    <div id="content" class="col-sm-12">
+      {% comment %}<h1>{{ 'contact.form.page_heading' | t }}</h1>{% endcomment %}
+      <h3>{{ 'contact.form.location' | t }}</h3>
+      <!--Map area start -->
+      <div >
+        {% if settings.show_map %}
+        {{ settings.map_code }}
+        {% endif %}
+      </div>
+      <!--Map area end -->
+      <div class="form-horizontal">
+        {% form 'contact' %}
+        {% if form.posted_successfully? %}
+        <p class="note form-success">
+          {{ 'contact.form.post_success' | t }}
+        </p>
+        {% endif %}
+
+        {% include 'form-errors-custom' %}
+        <fieldset>
+          <h3 class="page-subheading">{{ 'contact.form.leave_msg' | t }}</h3>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-name">{{ 'contact.form.name' | t }}</label>
+            <div class="col-sm-10">
+              <input type="text" id="contactFormName" name="contact[name]" class="form-control grey" placeholder="{{ 'contact.form.name' | t }}" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-name">{{ 'contact.form.email' | t }}</label>
+            <div class="col-sm-10">
+              <input type="text" id="contactFormEmail" name="contact[email]" class="form-control grey" placeholder="{{ 'contact.form.email' | t }}" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-name">{{ 'contact.form.phone' | t }}</label>
+            <div class="col-sm-10">
+              <input type="text" id="contactFormPhone" name="contact[phone]" class="form-control grey" placeholder="{{ 'contact.form.phone' | t }}" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-name">{{ 'contact.form.message' | t }}</label>
+            <div class="col-sm-10">
+              <textarea class="form-control" rows="10" id="contactFormMessage" name="contact[body]" placeholder="{{ 'contact.form.message' | t }}">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+            </div>
+          </div>
+        </fieldset>
+        <div class="buttons submit">
+          <div class="pull-right">
+            <input class="btn btn-primary" id="submitMessage" name="submitMessage" type="submit" value="{{ 'contact.form.send' | t }}" />
+          </div>
+        </div>
+
+        {% endform %}
+      </div>    
+    </div>
+  </div>
+</div>
+<!--End of Contact Us Area-->

@@ -1,0 +1,17 @@
+<!--Service Area Start-->
+<div class="ma-corporate-about style2" {% if section.settings.image != blank %}style="background-image: url('{{ section.settings.image | img_url: 'master' }}');" {% endif %}>
+  {% if section.blocks.size > 0 %}
+  {% for block in section.blocks limit:3 %}
+  <div class="col">
+    <div class="block-wrapper wrapper1">
+      <i class="{{block.settings.feature_service_icon }}"></i>
+      <div class="text-des">
+        <h3>{{ block.settings.feature_service_title }}</h3>
+        <p>{{ block.settings.feature_service_description }}</p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  {% endif %}
+</div>
+<!--End of Service Area-->

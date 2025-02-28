@@ -1,0 +1,126 @@
+<footer>
+  <div class="newsletter-group">
+    <div class="container">
+      {% if section.settings.footer_newsletter_enable %}
+      {% include 'newsletter' %}
+      {% endif %}
+    </div>
+  </div>
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-6 col-footer">
+          <div class="footer-title">{{ linklists[section.settings.footer_menu_1].title }}</div>
+          <div class="footer-content">
+            <ul class="list-unstyled text-content">
+              {% for link in linklists[section.settings.footer_menu_1].links %}
+              <li><a href="{{link.url}}">{{link.title}}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-footer">
+          <div class="footer-title">{{ linklists[section.settings.footer_menu_2].title }}</div>
+          <div class="footer-content">
+            <ul class="list-unstyled text-content">
+              {% for link in linklists[section.settings.footer_menu_2].links %}
+              <li><a href="{{link.url}}">{{link.title}}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-footer">
+          <div class="footer-title">{{ linklists[section.settings.footer_menu_3].title }}</div>
+          <div class="footer-content">
+            <ul class="list-unstyled text-content">
+              {% for link in linklists[section.settings.footer_menu_3].links %}
+              <li><a href="{{link.url}}">{{link.title}}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-12 col-footer">
+          <div class="footer-content">
+            {% if section.settings.image %}
+            <a href="/" itemprop="url" class="logo-footer">
+              <img src="{{ section.settings.image | img_url: 'master' }}"
+                   alt="{{ section.settings.image.alt | default: shop.name }}"
+                   itemprop="logo">
+            </a>
+            {% else %}
+            <h3>{{ 'layout.footer.contact' | t }}</h3>
+            {% endif %}
+            <p class="des">{{ section.settings.footer_about_us }}</p>
+            <ul class="footer-contact">
+              <li><label>{{ 'layout.footer.contact' | t }}: </label>{{ section.settings.footer_contact_info }}</li>
+            </ul>
+            {% if section.settings.footer_social_enable %}
+            {% include 'social-button' %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-middle">
+    <div class="container">
+      <div class="container-inner">
+        <div class="static-info">
+          <div class="link">
+            {% for link in linklists[section.settings.footer_menu_4].links %}
+            <a href="{{link.url}}">{{link.title}}</a> | 
+            {% endfor %}
+          </div>
+          <div class="logo-icon">
+            {% unless shop.enabled_payment_types == empty %}
+            <ul class="list-unstyled list-inline ct-socials text-center-sm ct-payment">
+              {% assign enabled_payment_types = 'visa,mastercard,amex,paypal' | remove: ' ' | split: ',' %}
+              {% for type in enabled_payment_types %}
+              <li>
+                <a class="f-payment icon fa fa-cc-{{ type }} fa-2x" aria-hidden="true"></a>
+              </li>
+              {% endfor %}
+            </ul>
+            {% endunless %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="container-inner">
+        <div class="footer-copyright">
+          <span>{{ section.settings.footer_content_text }}</span>
+        </div>
+        <ul class="link-footer-bottom">
+          {% for link in linklists[section.settings.footer_menu_5].links %}
+          <li><a href="{{link.url}}">{{link.title}}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="back-top"><i class="ion-chevron-up"></i></div>
+</footer>
+<script type="text/javascript">
+  $(document).ready(function(){
+    // hide #back-top first
+    $("#back-top").hide();
+    // fade in #back-top
+    $(function () {
+      $(window).scroll(function () {
+        if ($(this).scrollTop() > $('body').height()/3) {
+          $('#back-top').fadeIn();
+        } else {
+          $('#back-top').fadeOut();
+        }
+      });
+      // scroll body to 0px on click
+      $('#back-top').click(function () {
+        $('body,html').animate({scrollTop: 0}, 800);
+        return false;
+      });
+    });
+  });
+</script>

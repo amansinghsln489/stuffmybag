@@ -1,0 +1,26 @@
+<div class="banner-static static-bottom-volga2">
+  <div class="row">
+    {% if section.blocks.size > 0 %}
+    {% for block in section.blocks limit:5 %}
+    {% cycle '<div class="col col-sm-4 col-xs-12">','','<div class="col col-sm-4 col-xs-12">','<div class="col col-sm-4 col-xs-12">','' %}
+    <div class="image">
+      {% if block.settings.link != blank %}          
+      <a href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
+        {% endif %}
+        {% if block.settings.image != blank %}
+        <img src="{{ block.settings.image | img_url: 'master' }}" class="" alt=""/>
+        {% endif %}
+        {% if block.settings.link != blank %}          
+      </a>
+      {% endif %}
+    </div>
+    <div class="text-content">
+      {% if block.settings.link_text != blank %}          
+      <a href="{{ block.settings.link }}" class="" {{ block.shopify_attributes }}>{{ block.settings.link_text }}</a>
+      {% endif %}
+    </div>
+    {% cycle '','</div>','</div>','','</div>' %}
+    {% endfor %}
+    {% endif %}
+  </div>
+</div>
