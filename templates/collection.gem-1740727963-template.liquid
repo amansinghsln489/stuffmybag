@@ -1,0 +1,50 @@
+<div class="container layer-category">
+  {% include 'breadcrumb' %}
+  <div class="clearfix"></div>
+  <div class="row">
+    <div class="col-order">
+      {% if settings.show_collection_sidebar == 'left' %}
+      {% include 'collection-sidebar' %}
+      {% endif %}
+      {% if settings.show_collection_sidebar != 'no' %}
+      <div id="content" class="col-md-9 col-sm-12 col-xs-12">
+        {% else %}
+        <div id="content" class="col-md-12 col-sm-12 col-xs-12">
+          {% endif %}
+          <div class="category-info">
+          </div>
+          <div class="custom-category">
+            <div id="wraper_ajax" class="loadding_ajaxcart" ><i class="fa fa-spinner fa-spin"></i></div>
+            {% paginate collection.products by settings.product_count_per_page %}
+            <div class="toolbar  toolbar-products">
+              <div class="modes">{% include 'collection-views' %}</div>
+              <div class="toolbar-amount"> {% include 'pagination-toolbar-amount' %}</div>
+              <div class="sorter">{% include 'collection-sorting' %}</div>
+              <div class="limiter">{% include 'collection-show-count' %}</div>
+            </div>
+            <div class="custom-products" id="custom-products">
+              <div class="row">
+                {% for product in collection.products %}
+                {% if settings.show_collection_sidebar != false %}
+                {% include 'product-grid-item-collection' %}
+                {% else %}
+                {% include 'product-grid-item-collection' %}
+                {% endif %}
+                {% else %}
+                <div class="grid-item">
+                  <p>{{ 'collections.general.no_matches' | t }}</p>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+            {% include 'pagination' %}
+            {% endpaginate %}
+          </div>
+        </div>
+      </div>
+      {% if settings.show_collection_sidebar == 'right' %}
+      {% include 'collection-sidebar' %}
+      {% endif %}
+    </div>
+  </div>
+</div>
