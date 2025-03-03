@@ -43,7 +43,9 @@
             {% endif %}
             <p class="submit">			
               <input type="submit" value="{{ 'customer.login.sign_in' | t }}" class="btn btn-primary" />
-              {{ 'customer.login.or' | t }} <a class="btn-acct" href="{{ shop.url }}">{{ 'customer.login.cancel' | t }}</a>
+              {{ 'customer.login.or' | t }}  <a class="btn btn-secondary btn-cancel" href="{{ shop.url }}">
+                <i class="fa fa-times left"></i> {{ 'customer.register.cancel' | t }}
+              </a>
             </p>
             {% endform %}
             {% comment %}
@@ -115,11 +117,6 @@
   {% endif %}
 </script>
 <style>
- 
-
-
-
-
 .well {
     background-color: #ffffff;
     padding: 25px;
@@ -213,5 +210,53 @@ input.form-control:focus {
         padding: 0 15px;
     }
 }
+.btn-primary {
+  background: #007bff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #0056b3;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .col-sm-2 {
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 5px;
+  }
+  .col-sm-10 {
+    width: 100%;
+  }
+}
+.btn-secondary {
+  background: #6c757d;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: #5a6268;
+  color: #fff;
+  text-decoration: none;
+}
+a.btn.btn-secondary.btn-cancel {
+margin-top: 9px;
+}
+
 
   </style>
