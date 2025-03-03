@@ -115,3 +115,114 @@
   document.getElementById('resetSuccess').style.display = 'block';
   {% endif %}
 </script>
+<style>
+  body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.col-sm-6 {
+    max-width: 450px;
+}
+
+.well {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* Form styles */
+.form-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+label.control-label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+input.form-control:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Button styles */
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-acct {
+    color: #007bff;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.btn-acct:hover {
+    text-decoration: underline;
+}
+
+/* Forgot password section */
+#recover_password {
+    margin-top: 20px;
+}
+
+.lost-password {
+    margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .col-sm-6 {
+        max-width: 100%;
+        padding: 0 15px;
+    }
+}
+
+  </style>
