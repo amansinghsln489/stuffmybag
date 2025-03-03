@@ -44,9 +44,14 @@
                 </span>
               </button>
               &nbsp;
-              {{ 'customer.register.or' | t }} <a class="btn-acct" href="{{ shop.url }}">{{ 'customer.register.cancel' | t }}</a>
-
+              {{ 'customer.register.or' | t }} 
+            
+              <!-- Button-style Link -->
+              <a class="btn btn-secondary btn-cancel" href="{{ shop.url }}">
+                <i class="fa fa-times left"></i> {{ 'customer.register.cancel' | t }}
+              </a>
             </div>
+            
           </div>
           {% endform %}
         </div>
@@ -156,6 +161,23 @@
       width: 100%;
     }
   }
+  .btn-secondary {
+    background: #6c757d;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+    color: #fff;
+    text-decoration: none;
+}
+
   
 </style>
 
