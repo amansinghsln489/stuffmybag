@@ -1,1 +1,566 @@
-{"current":{"type_base_family":"Google_Poppins_300,400,500,600,700,800_sans","type_header_family":"Google_Karla_400,700_sans","type_accent_family":"Google_Roboto_100,100i,300,300i,400,400i,500,500i,700,700i,900,900i_sans","favicon_enable":true,"img_size_product":"600x695","img_size_grid":"600x695","product_new_time":"7","product_grid_img_carousel":false,"mailing_list_form_action":"","color_skin":"#f71111","color_skin_2":"#ed1616","bg_color":"#ffffff","color_top_header":"#ffffff","color_top_header_label":"#2c2c2c","color_top_header_border":"#ed1616","color_center_header":"#ffffff","color_menu_bg":"#ed1616","color_menu_links":"#2c2c2c","color_footer_newsletter_bar":"#303031","color_footer":"#292929","color_footer_heading":"#ffffff","color_footer_links":"#919191","color_social_links":"#363636","color_footer_text":"#818181","color_footer_border":"#363636","show_third_tab":true,"third_tab_title":"Additional Information","third_tab_text":"<p>You can use this tab for adding shipping details, return policies and information or measurements etc. <\/p>\n<p>\nLorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi<\/p>","product_page_layout":"horizontal_thumbs","product_quantity_enable":true,"product_quantity_message":true,"product_vendor_enable":true,"product_show_compare_at_price":true,"related_products_enable":true,"product_reviews_enable":true,"show_map":true,"map_code":"<iframe src=\"https:\/\/www.google.com\/maps\/embed?pb=!1m18!1m12!1m3!1d2950.6822073234102!2d-83.71685604946924!3d42.30664594636449!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883cac2c20114b69%3A0x96fe590afa21efb6!2s2300+Traverwood+Dr%2C+Ann+Arbor%2C+MI+48105!5e0!3m2!1sen!2s!4v1461260551915\" width=\"100%\" height=\"400\" frameborder=\"0\" style=\"border:0\" allowfullscreen><\/iframe>","product_count_per_page":"9","show_collection_sidebar":"left","collection_view_default":"list","category_count":"5","collection_sidebar_filters":"groups","show_collection_side_image":true,"collection_side_link":"#","show_collection_side_listing":false,"collection_side_listing_title":"Random Products","collection_side_listing":"frontpage","cart_notes_enable":true,"ajax_cart_method":"page","shipping_calculator":"Enabled","shipping_calculator_heading":"Get shipping estimates","shipping_calculator_default_country":"United States","shipping_calculator_submit_button_label":"Calculate shipping","shipping_calculator_submit_button_label_disabled":"Calculating...","show_pupup":true,"popup_title":"newsletter","show_pupup_image":false,"popup_heading":"SUBSCRIBE TO OUR NEWSLETTER","popup_description":"Enter your email address to receive all news, updates on new arrivals, special offers and other discount information.","popup_btn_text":"Subscribe","popup_no_link_text":"Don’ts show","no_articles":"3","social_sidebar_enable":true,"social_twitter_link":"https:\/\/x.com\/ucodice","social_facebook_link":"https:\/\/www.facebook.com\/ucodice","social_pinterest_link":"https:\/\/pinterest.com\/shopify","social_google_plus_link":"https:\/\/plus.google.com\/+shopify","social_instagram_link":"https:\/\/instagram.com\/shopify","social_tumblr_link":"","social_youtube_link":"","social_vimeo_link":"","social_fancy_link":"","show_dollar_symbol":false,"superscript_decimals":true,"show_multiple_currencies":true,"currency_format":"money_format","supported_currencies":"USD EUR GBP PKR CAD JPY INR","default_currency":"USD","checkout_header_image":"","checkout_logo_image":"","checkout_logo_position":"left","checkout_logo_size":"medium","checkout_body_background_image":"","checkout_body_background_color":"#ffffff","checkout_input_background_color_mode":"white","checkout_sidebar_background_image":"","checkout_sidebar_background_color":"#fafafa","checkout_heading_font":"Helvetica Neue","checkout_body_font":"Helvetica Neue","checkout_accent_color":"#1990c6","checkout_button_color":"#1990c6","checkout_error_color":"#ff6d6d","show_collection_top_image":true,"color_bottom_header_border":"#ffffff","product_sticky_layout":false,"product_vertical_thumbs":false,"product_vertical_related":false,"product_show_saved_amount":true,"product_enable_zoom":true,"social_follow_bar":true,"social_sharing_products":true,"social_sharing_blog":true,"social_sharing_count":true,"social_sharing_style":"is-default","share_facebook":true,"share_twitter":true,"share_pinterest":true,"share_fancy":true,"share_google":true,"type_base_size":"13px","show_banner":true,"sidebar_image_link":"collections\/all","collection_prod_image_sizes":"large","product_reviews_star_color":"#e5c649","footer_legallinks_enable":true,"footer_legallinks_linklist":"","type_navigation_size":"15px","type_navigation_transform":true,"type_button_size":"16px","type_button_transform":false,"logo_max_width":"305","logo_use_image":true,"type_header_transform":true,"color_primary":"#49aa9d","color_secondary":"#dcdcdc","color_accent":"#49aa9d","color_borders":"#ececec","color_header_background":"#ffffff","color_header_text":"#585858","color_header_cart_search":"#f2f2f2","color_nav_bg":"#49aa9d","color_nav_text":"#ffffff","color_body_text":"#585858","color_heading_text":"#333333","color_footer_bg":"#f2f2f2","color_footer_social_link":"#bbbbbb","sections":{"header":{"type":"header","blocks":{"1511196774935":{"type":"megamenu","settings":{"mega_menu":"","mega_menu_col_1":"menu","mega_menu_title_col_1":"Men","mega_menu_ll_col_1":"main-menu","mega_menu_collection_col_1":"","mega_menu_image_link_col_1":"","mega_menu_col_2":"menu","mega_menu_title_col_2":"Women","mega_menu_ll_col_2":"main-menu","mega_menu_collection_col_2":"","mega_menu_image_link_col_2":"","mega_menu_col_3":"menu","mega_menu_title_col_3":"Kids","mega_menu_ll_col_3":"main-menu","mega_menu_collection_col_3":"","mega_menu_image_link_col_3":"","mega_menu_col_4":"menu","mega_menu_title_col_4":"","mega_menu_ll_col_4":"","mega_menu_collection_col_4":"","mega_menu_image_link_col_4":""}}},"block_order":["1511196774935"],"custom_css":[".fix-header {display: none;}",".header-inner {position: relative; z-index: 8; background: #f3f3f3;}",".top-menu {background: #f3f3f3;}","* {-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; color: black;}",".ion-ios-search-strong:before {color: white;}",".pt_custommenu {margin: -16px auto; white-space: nowrap;}",".pt_custommenu {margin: -1px auto; margin-left: 150px; white-space: narrower;}",".col-search,.hd4 .hoz-menu {top: 64%;}"],"settings":{"header_layout":"header-2","use_top_bar":true,"top_bar_message":"BLACK FRIDAY SALE UP TO 70% OFF. USE CODE: “SALE70”. SHOP NOW","logo_use_image":true,"logo":"shopify:\/\/shop_images\/logo_300x_306cde76-392e-4969-abae-8b16efbec084.webp","header_message":"Amann","header_menu_1":"main-menu","header_menu_2":"main-menu"}},"footer":{"type":"footer","custom_css":[".newsletter-group {background: #f3f3f3; padding: 18px 0;}","#dialog-normal .newletter-title label {color: #000;}","#dialog-normal .newletter-title h3 {color: #000;}","#subscribe_email-normal {color: #000 !important ;}",".footer-middle {display: none;}",".footer-top {background: #fff; padding: 10px 0 25px 0;}",".footer-bottom .footer-copyright {color: black; text-align: center;}"],"settings":{"footer_layout":"footer-1","footer_content_enable":false,"footer_about_us":"We create high quality multipurpose and responsive premium Shopify themes.","footer_contact_info":"IHDP Business Park Noida Sector 127","footer_menu_1":"shop","footer_menu_2":"company","footer_menu_3":"help","footer_menu_4":"","footer_menu_5":"","footer_newsletter_enable":true,"mailing_list_form_action":"","heading":"Subscribed","footer_social_enable":true,"footer_content_text":"Copyright © 2024 Stuffmybag | All rights reserved."}},"brands":{"type":"brands","blocks":{"1499679798583":{"type":"image","settings":{"image":"","link":""}}},"block_order":["1499679798583"],"settings":{"layout":"brands","heading":"Logo Brands & Clients","fullwidth":true}},"1504781997946":{"type":"service-box","blocks":{"1504781997946-0":{"type":"box","settings":{"feature_service_icon":"ion-android-time","feature_service_title":"Mon - Fri \/ 8:00 - 18:00","feature_service_description":"Working Days\/Hours!"}},"1504782065705":{"type":"box","settings":{"feature_service_icon":"ion-ios-email-outline","feature_service_title":"support@volga.com","feature_service_description":"Orders Support!"}},"1504781997946-1":{"type":"box","settings":{"feature_service_icon":"ion-ios-telephone","feature_service_title":"+88 12 345 6789","feature_service_description":"Free support line!"}}},"block_order":["1504781997946-0","1504782065705","1504781997946-1"],"settings":{"layout":"feature-service2","fullwidth":false}},"1508088344742":{"type":"collection-tab","custom_css":[".tabs-category-slider .module-title h2 {padding: 11px 35px 11px 37px; background: #ff8d68; min-width: 18.097%;}"],"settings":{"products_tab_layout":"products-tab1","listing_rows":"2","no_of_products":"2","heading":"Top Selling product","heading_color":"#2c2c2c","heading_icon":"","image":"shopify:\/\/shop_images\/collection_side.jpg","link":"shopify:\/\/collections\/all","heading2":"","heading_color2":"#ff8d68","heading_icon2":"ion-ipad","image2":"shopify:\/\/shop_images\/1.webp","fullwidth":false,"products_tab_collection1":"","products_tab_collection2":"baby","products_tab_collection3":"fashion","products_tab_collection4":"","products_tab_collection5":"","products_tab_count":"8","product_grid_img_carousel":false}},"1508329681974":{"type":"instagram-feed","custom_css":[".occountdown_module .module-title {text-align: center;}"],"settings":{"layout":"instafeed","homepage_instagram_feed":false,"insta_title":"customer support","description":"","insta_access_token":"4032644233.1677ed0.c17607b4a50e46b1a13a7a7713af871f","insta_images_fetch":"10","fullwidth":false}},"1509373704466":{"type":"brands","blocks":{"1509373704466-0":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/download_75fb7ddb-9bb7-41f3-bda9-7f2d8e372acc.png","link":"shopify:\/\/collections\/all"}},"1509373704466-1":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/download_2a99cb6a-16d4-47f0-bef4-1bd1b1cbfd0b.png","link":"shopify:\/\/collections\/all"}},"1509373753755":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/images_1.jpg","link":"shopify:\/\/collections\/all"}},"1509373760841":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/images.png","link":"shopify:\/\/collections\/all"}},"1509373767400":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/download_1.png","link":"shopify:\/\/collections\/all"}}},"block_order":["1509373704466-0","1509373704466-1","1509373753755","1509373760841","1509373767400"],"custom_css":[],"settings":{"layout":"brands","heading":"TRUSTED PARTNER","fullwidth":false}},"1509675262835":{"type":"product-deals","blocks":{"1509675262835-0":{"type":"deal","settings":{"product_deal":"oncarnival-beautiful-newborn-baby-electric-1","expiry_deal":"2026-01-01"}},"1509675262835-1":{"type":"deal","settings":{"product_deal":"oncarnival-cute-bear-straw-water-bottle","expiry_deal":"2018-01-02"}},"deal_hVwFVR":{"type":"deal","settings":{"product_deal":"oncaarnival-foldable-baby-mosquito-net-botto","expiry_deal":""}},"1509704544976":{"type":"deal","settings":{"product_deal":"oncarnival-beautiful-newborn-baby-electric","expiry_deal":"2018-01-03"}},"1509704553152":{"type":"deal","settings":{"product_deal":"oncarnival-newborn-baby-electric-swing","expiry_deal":"2018-01-04"}},"1509704562559":{"type":"deal","settings":{"product_deal":"oncarnival-oncaarnival-bib-for-feeding-infa","expiry_deal":"2018-01-05"}}},"block_order":["1509675262835-0","1509675262835-1","deal_hVwFVR","1509704544976","1509704553152","1509704562559"],"custom_css":[".occountdown_module .module-title {text-align: center;}",".trustshop-rating-star--container {margin-left: 50px;}"],"settings":{"collection_layout":"deals-layout1","heading":"Buy the latest arrival","link":"shopify:\/\/collections\/all","fullwidth":false}},"1510858273009":{"type":"category","blocks":{"1510858273009-0":{"type":"category","settings":{"image":"shopify:\/\/shop_images\/download_ba69f489-3ba5-47bf-a42f-d24e1b234890.jpg","link_text":"COMPUTERS & ACCESSORIES","link":"shopify:\/\/collections\/all"}},"1510858410602":{"type":"category","settings":{"image":"shopify:\/\/shop_images\/download_1.jpg","link_text":"BAGS,WALLETS AND LUGGAGE","link":"shopify:\/\/collections\/all"}},"1510858273009-1":{"type":"category","settings":{"image":"shopify:\/\/shop_images\/download_2.jpg","link_text":"CLOTHING & ACCESSORIES","link":"shopify:\/\/collections\/all"}},"1510858389807":{"type":"category","settings":{"image":"shopify:\/\/shop_images\/images.jpg","link_text":"ELECTRONICS","link":"shopify:\/\/collections\/all"}}},"block_order":["1510858273009-0","1510858410602","1510858273009-1","1510858389807"],"settings":{"heading":"Featured Categories"}},"ad_banner_PcDarT":{"type":"ad-banner","blocks":{"image_QXaJ8G":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Frame_2147223637_1920x_339e6383-2bbd-4798-b1d6-946265bb73f1.jpg","link":"","heading":"Get All Range Of Products At One Stop","description":"","link_text":""}}},"block_order":["image_QXaJ8G"],"custom_css":["img {margin-top: -40px;}",".text-content h2 {text-align: center; font-size: 32px; font-weight: bold; margin-bottom: 20px;}","@media screen and (min-width: 1025px) and (max-width: 1536px) {.text-content h2 {font-size: 36px; margin-bottom: 317px; }}","@media screen and (max-width: 1024px) {.text-content h2 {font-size: 36px; margin-bottom: 120px; }}","@media screen and (max-width: 767px) {.text-content h2 {font-size: 28px; margin-bottom: 30px; }}","@media screen and (max-width: 480px) {.text-content h2 {font-size: 15px; }}"],"settings":{"feature_advert_design":"feature-advert1","fullwidth":true}}},"content_for_index":["ad_banner_PcDarT","1510858273009","1509675262835","1508088344742","1508329681974","1504781997946","1509373704466"],"blocks":{"14060646107696862457":{"type":"shopify:\/\/apps\/judge-me-reviews\/blocks\/judgeme_core\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8","disabled":false,"settings":{}},"6089946381803635929":{"type":"shopify:\/\/apps\/kwik-cod-checkout\/blocks\/app-embed\/74f36c20-677c-4aa2-b179-1769aa61abaa","disabled":false,"settings":{"gkc_button_text":"Checkout Now","gkc_button_subtext":"","gkc_button_bg":"#000000","gkc_text_color":"#ffffff","gk_image":true}},"10274264662263595587":{"type":"shopify:\/\/apps\/wishlist-plus\/blocks\/wishlist-collections-embed\/80c3b1fc-3a8f-407e-8367-ffdeebb8b612","disabled":false,"settings":{"swym_collections_icon_type":"heart","swym_collections_position":"top-right","swym_collections_vertical_offset":0,"swym_collections_horizontal_offset":0,"swym_collections_button_size":25,"swym_collections_icon_color":"#000000","swym_collections_product_link_selector":"-","swym_collections_product_tile_selector":"-","enable_variant_selector":false,"swym_add_to_wishlist_title_color":"#333","swym_variant_selector_font_size_1":14,"swym_variant_selector_popup_bg_color":"#fff","swym_variant_selector_section_heading_color":"#000","swym_variant_selector_section_heading_font_size_2":12,"swym_variant_selector_choose_create_text":"Choose or Create new Wishlist","swym_variant_selector_wishlist_btn_bg_color":"#292929","swym_variant_selector_wishlist_btn_color":"#fff","swym_variant_selector_product_detail_font_color":"#fff","swym_variant_selector_create_list_placeholder_text":"Enter wishlist name","swym_variant_selector_create_list_title":"Name Your Wishlist"}},"5946647744298494267":{"type":"shopify:\/\/apps\/wishlist-plus\/blocks\/wishlist-app-embed\/80c3b1fc-3a8f-407e-8367-ffdeebb8b612","disabled":false,"settings":{"storefront_layout_enabled":false,"storefront_layout_type":"as-drawer","storefront_layout_collection_enabled":true,"storefront_layout_primary_bg_color":"#000000","storefront_layout_primary_text_color":"#ffffff","storefront_layout_secondary_bg_color":"#F4F8FE","storefront_layout_secondary_text_color":"#333333","storefront_layout_ui_border_radius":6,"storefront_layout_notification_enabled_as_default":true,"storefront_layout_notification_position":"left","storefront_layout_action_popup_position":"left","storefront_layout_drawer_position":"left","storefront_layout_drawer_width":400,"storefront_layout_as_section_page":""}},"6478312753674380289":{"type":"shopify:\/\/apps\/gempages-builder\/blocks\/embed-gp-script-head\/20b379d4-1b20-474c-a6ca-665c331919f3","disabled":true,"settings":{}},"4935202709820522637":{"type":"shopify:\/\/apps\/trustshop-reviews\/blocks\/review-embed\/18b0c4cc-5411-4b6e-922d-34fdc2f30ab9","disabled":false,"settings":{}}}},"presets":{}}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "type_base_family": "Google_Poppins_300,400,500,600,700,800_sans",
+    "type_header_family": "Google_Karla_400,700_sans",
+    "type_accent_family": "Google_Roboto_100,100i,300,300i,400,400i,500,500i,700,700i,900,900i_sans",
+    "favicon_enable": true,
+    "img_size_product": "600x695",
+    "img_size_grid": "600x695",
+    "product_new_time": "7",
+    "product_grid_img_carousel": false,
+    "mailing_list_form_action": "",
+    "color_skin": "#f71111",
+    "color_skin_2": "#ed1616",
+    "bg_color": "#ffffff",
+    "color_top_header": "#ffffff",
+    "color_top_header_label": "#2c2c2c",
+    "color_top_header_border": "#ed1616",
+    "color_center_header": "#ffffff",
+    "color_menu_bg": "#ed1616",
+    "color_menu_links": "#2c2c2c",
+    "color_footer_newsletter_bar": "#303031",
+    "color_footer": "#292929",
+    "color_footer_heading": "#ffffff",
+    "color_footer_links": "#919191",
+    "color_social_links": "#363636",
+    "color_footer_text": "#818181",
+    "color_footer_border": "#363636",
+    "show_third_tab": true,
+    "third_tab_title": "Additional Information",
+    "third_tab_text": "<p>You can use this tab for adding shipping details, return policies and information or measurements etc. </p>\n<p>\nLorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi</p>",
+    "product_page_layout": "horizontal_thumbs",
+    "product_quantity_enable": true,
+    "product_quantity_message": true,
+    "product_vendor_enable": true,
+    "product_show_compare_at_price": true,
+    "related_products_enable": true,
+    "product_reviews_enable": true,
+    "show_map": true,
+    "map_code": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2950.6822073234102!2d-83.71685604946924!3d42.30664594636449!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883cac2c20114b69%3A0x96fe590afa21efb6!2s2300+Traverwood+Dr%2C+Ann+Arbor%2C+MI+48105!5e0!3m2!1sen!2s!4v1461260551915\" width=\"100%\" height=\"400\" frameborder=\"0\" style=\"border:0\" allowfullscreen></iframe>",
+    "product_count_per_page": "9",
+    "show_collection_sidebar": "left",
+    "collection_view_default": "list",
+    "category_count": "5",
+    "collection_sidebar_filters": "groups",
+    "show_collection_side_image": true,
+    "collection_side_link": "#",
+    "show_collection_side_listing": false,
+    "collection_side_listing_title": "Random Products",
+    "collection_side_listing": "frontpage",
+    "cart_notes_enable": true,
+    "ajax_cart_method": "page",
+    "shipping_calculator": "Enabled",
+    "shipping_calculator_heading": "Get shipping estimates",
+    "shipping_calculator_default_country": "United States",
+    "shipping_calculator_submit_button_label": "Calculate shipping",
+    "shipping_calculator_submit_button_label_disabled": "Calculating...",
+    "show_pupup": true,
+    "popup_title": "newsletter",
+    "show_pupup_image": false,
+    "popup_heading": "SUBSCRIBE TO OUR NEWSLETTER",
+    "popup_description": "Enter your email address to receive all news, updates on new arrivals, special offers and other discount information.",
+    "popup_btn_text": "Subscribe",
+    "popup_no_link_text": "Don’ts show",
+    "no_articles": "3",
+    "social_sidebar_enable": true,
+    "social_twitter_link": "https://x.com/ucodice",
+    "social_facebook_link": "https://www.facebook.com/ucodice",
+    "social_pinterest_link": "https://pinterest.com/shopify",
+    "social_google_plus_link": "https://plus.google.com/+shopify",
+    "social_instagram_link": "https://instagram.com/shopify",
+    "social_tumblr_link": "",
+    "social_youtube_link": "",
+    "social_vimeo_link": "",
+    "social_fancy_link": "",
+    "show_dollar_symbol": false,
+    "superscript_decimals": true,
+    "show_multiple_currencies": true,
+    "currency_format": "money_format",
+    "supported_currencies": "USD EUR GBP PKR CAD JPY INR",
+    "default_currency": "USD",
+    "checkout_header_image": "",
+    "checkout_logo_image": "",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#ffffff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "Helvetica Neue",
+    "checkout_body_font": "Helvetica Neue",
+    "checkout_accent_color": "#1990c6",
+    "checkout_button_color": "#1990c6",
+    "checkout_error_color": "#ff6d6d",
+    "show_collection_top_image": true,
+    "color_bottom_header_border": "#ffffff",
+    "product_sticky_layout": false,
+    "product_vertical_thumbs": false,
+    "product_vertical_related": false,
+    "product_show_saved_amount": true,
+    "product_enable_zoom": true,
+    "social_follow_bar": true,
+    "social_sharing_products": true,
+    "social_sharing_blog": true,
+    "social_sharing_count": true,
+    "social_sharing_style": "is-default",
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "share_fancy": true,
+    "share_google": true,
+    "type_base_size": "13px",
+    "show_banner": true,
+    "sidebar_image_link": "collections/all",
+    "collection_prod_image_sizes": "large",
+    "product_reviews_star_color": "#e5c649",
+    "footer_legallinks_enable": true,
+    "footer_legallinks_linklist": "",
+    "type_navigation_size": "15px",
+    "type_navigation_transform": true,
+    "type_button_size": "16px",
+    "type_button_transform": false,
+    "logo_max_width": "305",
+    "logo_use_image": true,
+    "type_header_transform": true,
+    "color_primary": "#49aa9d",
+    "color_secondary": "#dcdcdc",
+    "color_accent": "#49aa9d",
+    "color_borders": "#ececec",
+    "color_header_background": "#ffffff",
+    "color_header_text": "#585858",
+    "color_header_cart_search": "#f2f2f2",
+    "color_nav_bg": "#49aa9d",
+    "color_nav_text": "#ffffff",
+    "color_body_text": "#585858",
+    "color_heading_text": "#333333",
+    "color_footer_bg": "#f2f2f2",
+    "color_footer_social_link": "#bbbbbb",
+    "sections": {
+      "header": {
+        "type": "header",
+        "blocks": {
+          "1511196774935": {
+            "type": "megamenu",
+            "settings": {
+              "mega_menu": "",
+              "mega_menu_col_1": "menu",
+              "mega_menu_title_col_1": "Men",
+              "mega_menu_ll_col_1": "main-menu",
+              "mega_menu_collection_col_1": "",
+              "mega_menu_image_link_col_1": "",
+              "mega_menu_col_2": "menu",
+              "mega_menu_title_col_2": "Women",
+              "mega_menu_ll_col_2": "main-menu",
+              "mega_menu_collection_col_2": "",
+              "mega_menu_image_link_col_2": "",
+              "mega_menu_col_3": "menu",
+              "mega_menu_title_col_3": "Kids",
+              "mega_menu_ll_col_3": "main-menu",
+              "mega_menu_collection_col_3": "",
+              "mega_menu_image_link_col_3": "",
+              "mega_menu_col_4": "menu",
+              "mega_menu_title_col_4": "",
+              "mega_menu_ll_col_4": "",
+              "mega_menu_collection_col_4": "",
+              "mega_menu_image_link_col_4": ""
+            }
+          }
+        },
+        "block_order": [
+          "1511196774935"
+        ],
+        "custom_css": [
+          ".fix-header {display: none;}",
+          ".header-inner {position: relative; z-index: 8; background: #f3f3f3;}",
+          ".top-menu {background: #f3f3f3;}",
+          "* {-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; color: black;}",
+          ".ion-ios-search-strong:before {color: white;}",
+          ".pt_custommenu {margin: -16px auto; white-space: nowrap;}",
+          ".pt_custommenu {margin: -1px auto; margin-left: 150px; white-space: narrower;}",
+          ".col-search,.hd4 .hoz-menu {top: 64%;}"
+        ],
+        "settings": {
+          "header_layout": "header-2",
+          "use_top_bar": true,
+          "top_bar_message": "BLACK FRIDAY SALE UP TO 70% OFF. USE CODE: “SALE70”. SHOP NOW",
+          "logo_use_image": true,
+          "logo": "shopify://shop_images/logo_300x_306cde76-392e-4969-abae-8b16efbec084.webp",
+          "header_message": "Amann",
+          "header_menu_1": "main-menu",
+          "header_menu_2": "main-menu"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "custom_css": [
+          ".newsletter-group {background: #f3f3f3; padding: 18px 0;}",
+          "#dialog-normal .newletter-title label {color: #000;}",
+          "#dialog-normal .newletter-title h3 {color: #000;}",
+          "#subscribe_email-normal {color: #000 !important ;}",
+          ".footer-middle {display: none;}",
+          ".footer-top {background: #fff; padding: 10px 0 25px 0;}",
+          ".footer-bottom .footer-copyright {color: black; text-align: center;}"
+        ],
+        "settings": {
+          "footer_layout": "footer-1",
+          "footer_content_enable": false,
+          "footer_about_us": "We create high quality multipurpose and responsive premium Shopify themes.",
+          "footer_contact_info": "IHDP Business Park Noida Sector 127",
+          "footer_menu_1": "shop",
+          "footer_menu_2": "company",
+          "footer_menu_3": "help",
+          "footer_menu_4": "",
+          "footer_menu_5": "",
+          "footer_newsletter_enable": true,
+          "mailing_list_form_action": "",
+          "heading": "Subscribed",
+          "footer_social_enable": true,
+          "footer_content_text": "Copyright © 2024 Stuffmybag | All rights reserved."
+        }
+      },
+      "brands": {
+        "type": "brands",
+        "blocks": {
+          "1499679798583": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "1499679798583"
+        ],
+        "settings": {
+          "layout": "brands",
+          "heading": "Logo Brands & Clients",
+          "fullwidth": true
+        }
+      },
+      "1504781997946": {
+        "type": "service-box",
+        "blocks": {
+          "1504781997946-0": {
+            "type": "box",
+            "settings": {
+              "feature_service_icon": "ion-android-time",
+              "feature_service_title": "Mon - Fri / 8:00 - 18:00",
+              "feature_service_description": "Working Days/Hours!"
+            }
+          },
+          "1504782065705": {
+            "type": "box",
+            "settings": {
+              "feature_service_icon": "ion-ios-email-outline",
+              "feature_service_title": "support@volga.com",
+              "feature_service_description": "Orders Support!"
+            }
+          },
+          "1504781997946-1": {
+            "type": "box",
+            "settings": {
+              "feature_service_icon": "ion-ios-telephone",
+              "feature_service_title": "+88 12 345 6789",
+              "feature_service_description": "Free support line!"
+            }
+          }
+        },
+        "block_order": [
+          "1504781997946-0",
+          "1504782065705",
+          "1504781997946-1"
+        ],
+        "settings": {
+          "layout": "feature-service2",
+          "fullwidth": false
+        }
+      },
+      "1508088344742": {
+        "type": "collection-tab",
+        "custom_css": [
+          ".tabs-category-slider .module-title h2 {padding: 11px 35px 11px 37px; background: #ff8d68; min-width: 18.097%;}"
+        ],
+        "settings": {
+          "products_tab_layout": "products-tab1",
+          "listing_rows": "2",
+          "no_of_products": "2",
+          "heading": "Top Selling product",
+          "heading_color": "#2c2c2c",
+          "heading_icon": "",
+          "image": "shopify://shop_images/collection_side.jpg",
+          "link": "shopify://collections/all",
+          "heading2": "",
+          "heading_color2": "#ff8d68",
+          "heading_icon2": "ion-ipad",
+          "image2": "shopify://shop_images/1.webp",
+          "fullwidth": false,
+          "products_tab_collection1": "",
+          "products_tab_collection2": "baby",
+          "products_tab_collection3": "fashion",
+          "products_tab_collection4": "",
+          "products_tab_collection5": "",
+          "products_tab_count": "8",
+          "product_grid_img_carousel": false
+        }
+      },
+      "1508329681974": {
+        "type": "instagram-feed",
+        "custom_css": [
+          ".occountdown_module .module-title {text-align: center;}"
+        ],
+        "settings": {
+          "layout": "instafeed",
+          "homepage_instagram_feed": false,
+          "insta_title": "customer support",
+          "description": "",
+          "insta_access_token": "4032644233.1677ed0.c17607b4a50e46b1a13a7a7713af871f",
+          "insta_images_fetch": "10",
+          "fullwidth": false
+        }
+      },
+      "1509373704466": {
+        "type": "brands",
+        "blocks": {
+          "1509373704466-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/download_75fb7ddb-9bb7-41f3-bda9-7f2d8e372acc.png",
+              "link": "shopify://collections/all"
+            }
+          },
+          "1509373704466-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/download_2a99cb6a-16d4-47f0-bef4-1bd1b1cbfd0b.png",
+              "link": "shopify://collections/all"
+            }
+          },
+          "1509373753755": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/images_1.jpg",
+              "link": "shopify://collections/all"
+            }
+          },
+          "1509373760841": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/images.png",
+              "link": "shopify://collections/all"
+            }
+          },
+          "1509373767400": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/download_1.png",
+              "link": "shopify://collections/all"
+            }
+          }
+        },
+        "block_order": [
+          "1509373704466-0",
+          "1509373704466-1",
+          "1509373753755",
+          "1509373760841",
+          "1509373767400"
+        ],
+        "custom_css": [],
+        "settings": {
+          "layout": "brands",
+          "heading": "TRUSTED PARTNER",
+          "fullwidth": false
+        }
+      },
+      "1509675262835": {
+        "type": "product-deals",
+        "blocks": {
+          "1509675262835-0": {
+            "type": "deal",
+            "settings": {
+              "product_deal": "oncarnival-beautiful-newborn-baby-electric-1",
+              "expiry_deal": "2026-01-01"
+            }
+          },
+          "1509675262835-1": {
+            "type": "deal",
+            "settings": {
+              "product_deal": "oncarnival-cute-bear-straw-water-bottle",
+              "expiry_deal": "2018-01-02"
+            }
+          },
+          "deal_hVwFVR": {
+            "type": "deal",
+            "settings": {
+              "product_deal": "oncaarnival-foldable-baby-mosquito-net-botto",
+              "expiry_deal": ""
+            }
+          },
+          "1509704544976": {
+            "type": "deal",
+            "settings": {
+              "product_deal": "oncarnival-beautiful-newborn-baby-electric",
+              "expiry_deal": "2018-01-03"
+            }
+          },
+          "1509704553152": {
+            "type": "deal",
+            "settings": {
+              "product_deal": "oncarnival-newborn-baby-electric-swing",
+              "expiry_deal": "2018-01-04"
+            }
+          },
+          "1509704562559": {
+            "type": "deal",
+            "settings": {
+              "product_deal": "oncarnival-oncaarnival-bib-for-feeding-infa",
+              "expiry_deal": "2018-01-05"
+            }
+          }
+        },
+        "block_order": [
+          "1509675262835-0",
+          "1509675262835-1",
+          "deal_hVwFVR",
+          "1509704544976",
+          "1509704553152",
+          "1509704562559"
+        ],
+        "custom_css": [
+          ".occountdown_module .module-title {text-align: center;}",
+          ".trustshop-rating-star--container {margin-left: 50px;}"
+        ],
+        "settings": {
+          "collection_layout": "deals-layout1",
+          "heading": "Buy the latest arrival",
+          "link": "shopify://collections/all",
+          "fullwidth": false
+        }
+      },
+      "1510858273009": {
+        "type": "category",
+        "blocks": {
+          "1510858273009-0": {
+            "type": "category",
+            "settings": {
+              "image": "shopify://shop_images/download_ba69f489-3ba5-47bf-a42f-d24e1b234890.jpg",
+              "link_text": "COMPUTERS & ACCESSORIES",
+              "link": "shopify://collections/all"
+            }
+          },
+          "1510858410602": {
+            "type": "category",
+            "settings": {
+              "image": "shopify://shop_images/download_1.jpg",
+              "link_text": "BAGS,WALLETS AND LUGGAGE",
+              "link": "shopify://collections/all"
+            }
+          },
+          "1510858273009-1": {
+            "type": "category",
+            "settings": {
+              "image": "shopify://shop_images/download_2.jpg",
+              "link_text": "CLOTHING & ACCESSORIES",
+              "link": "shopify://collections/all"
+            }
+          },
+          "1510858389807": {
+            "type": "category",
+            "settings": {
+              "image": "shopify://shop_images/images.jpg",
+              "link_text": "ELECTRONICS",
+              "link": "shopify://collections/all"
+            }
+          }
+        },
+        "block_order": [
+          "1510858273009-0",
+          "1510858410602",
+          "1510858273009-1",
+          "1510858389807"
+        ],
+        "settings": {
+          "heading": "Featured Categories"
+        }
+      },
+      "ad_banner_PcDarT": {
+        "type": "ad-banner",
+        "blocks": {
+          "image_QXaJ8G": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/Frame_2147223637_1920x_339e6383-2bbd-4798-b1d6-946265bb73f1.jpg",
+              "link": "",
+              "heading": "Get All Range Of Products At One Stop",
+              "description": "",
+              "link_text": ""
+            }
+          }
+        },
+        "block_order": [
+          "image_QXaJ8G"
+        ],
+        "custom_css": [
+          "img {margin-top: -40px;}",
+          ".text-content h2 {text-align: center; font-size: 32px; font-weight: bold; margin-bottom: 20px;}",
+          "@media screen and (min-width: 1025px) and (max-width: 1536px) {.text-content h2 {font-size: 36px; margin-bottom: 317px; }}",
+          "@media screen and (max-width: 1024px) {.text-content h2 {font-size: 36px; margin-bottom: 120px; }}",
+          "@media screen and (max-width: 767px) {.text-content h2 {font-size: 28px; margin-bottom: 30px; }}",
+          "@media screen and (max-width: 480px) {.text-content h2 {font-size: 15px; }}"
+        ],
+        "settings": {
+          "feature_advert_design": "feature-advert1",
+          "fullwidth": true
+        }
+      }
+    },
+    "content_for_index": [
+      "ad_banner_PcDarT",
+      "1510858273009",
+      "1509675262835",
+      "1508088344742",
+      "1508329681974",
+      "1504781997946",
+      "1509373704466"
+    ],
+    "blocks": {
+      "14060646107696862457": {
+        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {}
+      },
+      "6089946381803635929": {
+        "type": "shopify://apps/kwik-cod-checkout/blocks/app-embed/74f36c20-677c-4aa2-b179-1769aa61abaa",
+        "disabled": false,
+        "settings": {
+          "gkc_button_text": "Checkout Now",
+          "gkc_button_subtext": "",
+          "gkc_button_bg": "#000000",
+          "gkc_text_color": "#ffffff",
+          "gk_image": true
+        }
+      },
+      "4935202709820522637": {
+        "type": "shopify://apps/trustshop-reviews/blocks/review-embed/18b0c4cc-5411-4b6e-922d-34fdc2f30ab9",
+        "disabled": false,
+        "settings": {}
+      },
+      "15796953133730294439": {
+        "type": "shopify://apps/growave-loyalty-wishlist/blocks/block.embed.socialshopwave-helper/b3d2efbe-110a-4e27-84a8-1f2ed63996a4",
+        "disabled": false,
+        "settings": {}
+      }
+    }
+  },
+  "presets": {}
+}
