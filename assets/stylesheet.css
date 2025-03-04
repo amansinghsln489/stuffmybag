@@ -227,6 +227,9 @@ a:hover,.banner-3 a:hover::before,
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
 }
+a.btn.btn-success {
+  margin-left: 17px;
+}
 #button-voucher,
 #button-coupon{
   height: 34px;
