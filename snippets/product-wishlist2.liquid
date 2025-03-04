@@ -26,7 +26,7 @@
     </form>
     {% form 'customer' %}
       <input type="hidden" name="contact[email]" value="{{ customer.email }}">
-      <input type="text" name="contact[tags]" value="{{ value }}">
+      <input type="hidden" name="contact[tags]" value="{{ value }}">
       <button
         class="button btn-wishlist"
         type="button"
