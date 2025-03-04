@@ -17,29 +17,6 @@
               </tr>
             </thead>
             {% for tag in customer.tags %}
-              {% assign product = all_products[tag] %}
-              {% if product %}
-                <tr>
-                  <td class="text-center">
-                    <button onclick="removeTag('{{ tag }}')" class="btn btn-danger">X</button>
-                  </td>
-                  <td class="text-center">
-                    <a href="{{ product.url }}">
-                      <img src="{{ product.featured_image | product_img_url: 'small' }}" class="img-thumbnail">
-                    </a>
-                  </td>
-                  <td class="text-center">
-                    <a href="{{ product.url }}">{{ product.title }}</a>
-                  </td>
-                  <td class="text-center">233</td>
-                  <td class="text-center">
-                    <a href="/cart/add?id={{ product.variants.first.id }}" class="btn btn-primary">Add to Cart</a>
-                  </td>
-                </tr>
-              {% endif %}
-            {% endfor %}
-
-            {% for tag in customer.tags %}
               {% assign the_test = 'nutthin' %}
               {% capture tag_id %}{{ tag }}{% endcapture %}
               {% assign tag_size = tag_id.size %}
@@ -68,49 +45,47 @@
                         {%- assign display = true -%}
                       {%- endif %}
                       {% if display and the_test contains product_id %}
-                        <!--
-                          <tbody data-line="{{ forloop.index }}">
-                            <tr>
-                              <td class="text-center btn-remove-product">
-                                <a
-                                  type="button"
-                                  data-toggle="tooltip"
-                                  title="Remove"
-                                  class="btn btn-danger"
-                                  onclick="removeTag('x{{ tag_id }}')"
-                                  data-line="{{ forloop.index }}"
-                                  ><i class="fa fa-times-circle"></i>
-                                </a>
-                              </td>
-                              <td class="text-center">
-                                <a href="{{ product.url }}">
-                                  <img
-                                    src="{{ product.featured_image | product_img_url: 'small' }}"
-                                    alt="{{ product.title}}"
-                                    class="img-thumbnail"
-                                  >
-                                </a>
-                              </td>
-                              <td class="text-center">
-                                <h5>
-                                  <a href="{{ product.url }}">{{ product.title }}</a>
-                                </h5>
-                              </td>
-                              <td class="text-center">
-                                <span class="price-product">{{ product.price | money }}</span>
-                              </td>
-                              <td class="text-center">
-                                <a
-                                  href="#add-to-cart"
-                                  class="btn btn-primary"
-                                  onclick="addToCart('{{ product.variants.first.id }}')"
+                        <tbody data-line="{{ forloop.index }}">
+                          <tr>
+                            <td class="text-center btn-remove-product">
+                              <a
+                                type="button"
+                                data-toggle="tooltip"
+                                title="Remove"
+                                class="btn btn-danger"
+                                onclick="removeTag('x{{ tag_id }}')"
+                                data-line="{{ forloop.index }}"
+                                ><i class="fa fa-times-circle"></i>
+                              </a>
+                            </td>
+                            <td class="text-center">
+                              <a href="{{ product.url }}">
+                                <img
+                                  src="{{ product.featured_image | product_img_url: 'small' }}"
+                                  alt="{{ product.title}}"
+                                  class="img-thumbnail"
                                 >
-                                  {{- 'wishlist.general.add_cart' | t -}}
-                                </a>
-                              </td>
-                            </tr>
-                          </tbody>
-                        -->
+                              </a>
+                            </td>
+                            <td class="text-center">
+                              <h5>
+                                <a href="{{ product.url }}">{{ product.title }}</a>
+                              </h5>
+                            </td>
+                            <td class="text-center">
+                              <span class="price-product">{{ product.price | money }}</span>
+                            </td>
+                            <td class="text-center">
+                              <a
+                                href="#add-to-cart"
+                                class="btn btn-primary"
+                                onclick="addToCart('{{ product.variants.first.id }}')"
+                              >
+                                {{- 'wishlist.general.add_cart' | t -}}
+                              </a>
+                            </td>
+                          </tr>
+                        </tbody>
                         {% capture used %}{{ product_id }} {{ used }}{% endcapture %}
                       {% endif %}
                     {% endunless %}
