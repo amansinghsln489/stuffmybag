@@ -26,15 +26,8 @@
     {% form 'customer', action: '/account' %}
       <input type="hidden" name="customer[email]" value="{{ customer.email }}">
       <input type="hidden" name="customer[tags]" value="{{ value }}">
-      <button
-        class="button btn-wishlist"
-        type="button"
-        data-toggle="tooltip"
-        title="{{ 'products.product.add_to_wishlist' | t }}"
-        data-original-title="{{ 'products.product.add_to_wishlist' | t }}"
-        onclick="this.parentNode.submit(); return false;"
-      >
-        <span>{{ 'products.product.add_to_wishlist' | t }}</span>
+      <button type="submit" class="btn-wishlist">
+        {{ 'products.product.add_to_wishlist' | t }}
       </button>
     {% endform %}
 
