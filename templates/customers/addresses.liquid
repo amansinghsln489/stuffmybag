@@ -91,10 +91,12 @@
                 </p>
               </div>
               <div class="col-sm-4 col-sm-offset-2">
-                <div class="buttons clearfix">
-                  <input type="submit" class="btn btn-primary" value="{{ 'customer.addresses.add' | t }}">
-                  <span class="form-spacer">or</span>
-                  <a href="#" class="btn btn-default" onclick="Shopify.CustomerAddress.toggleNewForm(); return false;">{{ 'customer.addresses.cancel' | t }}</a>
+                <div class="buttons fix">
+                  <div class="buttons clearfix">
+                    <input type="submit" class="btn btn-primary" value="{{ 'customer.addresses.add' | t }}">
+                    <span class="form-spacer">or</span>
+                    <a href="#" class="btn btn-default" onclick="Shopify.CustomerAddress.toggleNewForm(); return false;">{{ 'customer.addresses.cancel' | t }}</a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -278,7 +280,7 @@
   }
 </script>
 <style>
-  .buttons.clearfix {
+  .buttons .fix {
     margin-top: 14px;
     margin-left: -76px;
 }
