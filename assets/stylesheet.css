@@ -211,7 +211,6 @@ a:hover,.banner-3 a:hover::before,
 #button-guest, #button-search, #button-review, #button-account, #button-login, #button-confirm,
 #button-payment-method, #button-shipping-method, #button-quote, #button-coupon, #button-register,
 .form-horizontal input.btn, a.btn, input[type='submit'], .button{
-  margin-left: 20px;
   background: #2c2c2c;
   padding: 0px 25px;
   text-transform: uppercase;
