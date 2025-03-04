@@ -135,7 +135,7 @@
                   </p>
               </tr>
 
-              {% form 'customer_address', address %}
+              {% comment %} {% form 'customer_address', address %} {% endcomment %}
               <div class="form-horizontal contact-form" id="edit_address_{{ address.id }}" {% unless form.errors %}style="display:none;"{% endunless %}>
 
                 <h3>{{ 'customer.addresses.edit_address' | t }}</h3>
