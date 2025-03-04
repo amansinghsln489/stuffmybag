@@ -1,11 +1,4 @@
 {% if customer %}
-  <h3>Your Wishlist:</h3>
-  <ul>
-    {% for tag in customer.tags %}
-      {% assign productID = tag %}
-      <li>Product ID: {{ productID }}</li>
-    {% endfor %}
-  </ul>
   {% assign value = product.id %}
   {% capture productID %}{{ product.id }}{% endcapture %}
   {% for tag in customer.tags %}
@@ -42,7 +35,7 @@
         data-original-title="{{ 'products.product.add_to_wishlist' | t }}"
         onclick="this.parentNode.submit(); return false;"
       >
-        <span>{{ 'products.product.add_to_wishlist' | t }}</span>
+        <!-- <span>{{ 'products.product.add_to_wishlist' | t }}</span> -->
       </button>
     {% endform %}
 
