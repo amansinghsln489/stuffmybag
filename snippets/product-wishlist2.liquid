@@ -7,8 +7,8 @@
       {% capture value %}x{{ tagID }}{% endcapture %}
     {% endif %}
     {% if value.size == 0 %}
-      {{ 'a,mana' }}
       {% assign value = productID %}
+      <p>Value: {{ value }}</p>
     {% endif %}
   {% endfor %}
 
