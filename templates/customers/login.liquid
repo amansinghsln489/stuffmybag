@@ -230,24 +230,43 @@ input.form-control:focus {
 
 
 /* Responsive Design */
-@media (max-width: 768px) {
-  .col-sm-2 {
-    display: block;
-    width: 100%;
-    text-align: left;
-    margin-bottom: 5px;
+/* Responsive Design for small screens (below 768px) */
+@media (max-width: 767px) {
+  .row {
+      flex-direction: column;
+      align-items: center;
   }
- 
-  .col-sm-10 {
-    width: 100%;
+  
+  .col-sm-6 {
+      max-width: 100% !important;
+      padding: 0 15px;
   }
-}
-@media (min-width: 768px) {
+
   a.btn.btn-secondary.btn-cancel {
-    margin-top: 17px;
-    margin-left: 0px;
-    }
+      margin-top: 17px;
+      margin-left: 0px;
+  }
+  
+  .col-sm-2 {
+      display: block;
+      width: 100%;
+      text-align: left;
+      margin-bottom: 5px;
+  }
+
+  .col-sm-10 {
+      width: 100%;
+  }
 }
+
+/* Responsive Design for larger screens (768px and above) */
+@media (min-width: 769px) {
+  a.btn.btn-secondary.btn-cancel {
+      margin-top: 17px;
+      margin-left: 0px; /* Fixed missing semicolon */
+  }
+}
+
 .btn-secondary {
   background: #6c757d;
   color: #fff;
