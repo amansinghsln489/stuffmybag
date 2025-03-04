@@ -33,6 +33,7 @@
           {% endfor %}	
 
           {% for collection in collections %}
+            {{ collection.title }} - {{ collection.products.size }}
           {% paginate collection.products by collection.all_products_count %}
           {% for product in collection.products %}
           {% capture product_id %}{{ product.id }}{% endcapture %}
