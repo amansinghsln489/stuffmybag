@@ -17,6 +17,17 @@
               </tr>
             </thead>
             {% for tag in customer.tags %}
+              {% if customer.tags.size > 0 %}
+                <p>Customer Tags:</p>
+                <ul>
+                  {% for tag in customer.tags %}
+                    <li>{{ tag }}</li>
+                  {% endfor %}
+                </ul>
+              {% else %}
+                <p>No tags assigned to this customer.</p>
+              {% endif %}
+
               {% assign the_test = 'nutthin' %}
               {% capture tag_id %}{{ tag }}{% endcapture %}
               {% assign tag_size = tag_id.size %}
