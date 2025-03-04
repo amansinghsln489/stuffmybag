@@ -53,19 +53,20 @@
   </button>
 {% endif %}
 <script>
-  function updateWishlist(email, tags) {
+  function removeTag(tagID) {
     fetch('/account', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: `form_type=customer&utf8=✓&customer[email]=${encodeURIComponent(email)}&customer[tags]=${encodeURIComponent(tags)}`
+        body: `form_type=customer&utf8=✓&customer[email]={{ customer.email }}&customer[tags]=${encodeURIComponent(tagID)}`
     })
     .then(response => {
         if (response.ok) {
-            alert('Wishlist updated successfully!');
+            alert('Item removed from wishlist!');
+            location.reload(); // Refresh the page to update the wishlist
         } else {
-            alert('Error updating wishlist.');
+            alert('Error removing item.');
         }
     })
     .catch(error => console.error('Error:', error));
