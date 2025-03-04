@@ -36,7 +36,9 @@
                 {% paginate collection.products by collection.all_products_count %}
                   {% for product in collection.products %}
                     {% capture product_id %}{{ product.id }}{% endcapture %}
-                    {{ product.title }} - {{ product.id }} - {{ product.price | money }}
+
+                    {{ ammam -}}
+                    {{- product.title }} - {{ product.id }} - {{ product.price | money }}
                     {% unless used contains product_id %}
                       {% capture diff %}{{ tag_size | minus:product_id.size | money_without_currency | times:100 | divided_by:2 }}{% endcapture %}
                       {% assign check = diff | split: '.' %}
