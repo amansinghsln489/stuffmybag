@@ -35,7 +35,6 @@
               {% for collection in collections %}
                 {% paginate collection.products by collection.all_products_count %}
                   {% for product in collection.products %}
-                    <p>Product: {{ product.title }}</p>
                     {% capture product_id %}{{ product.id }}{% endcapture %}
                     {% unless used contains product_id %}
                       {% capture diff %}{{ tag_size | minus:product_id.size | money_without_currency | times:100 | divided_by:2 }}{% endcapture %}
