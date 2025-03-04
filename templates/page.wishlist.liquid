@@ -17,6 +17,9 @@
               </tr>
             </thead>
             {% for tag in customer.tags %}
+              <p>Checking tag: {{ tag }}</p>
+            {% endfor %}
+            {% for tag in customer.tags %}
               {% assign the_test = 'nutthin' %}
               {% capture tag_id %}{{ tag }}{% endcapture %}
               {% assign tag_size = tag_id.size %}
