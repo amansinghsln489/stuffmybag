@@ -8,7 +8,6 @@
     {% endif %}
     {% if value.size == 0 %}
       {% assign value = productID %}
-      <p>Value: {{ value }}</p>
     {% endif %}
   {% endfor %}
 
@@ -26,6 +25,7 @@
   {% if display %}
     </form>
     {% form 'customer' %}
+      <p>Value: {{ value }}</p>
       <input type="hidden" name="contact[email]" value="{{ customer.email }}">
       <input type="hidden" name="contact[tags]" value="{{ value }}">
       <button
