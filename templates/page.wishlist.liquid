@@ -17,6 +17,29 @@
               </tr>
             </thead>
             {% for tag in customer.tags %}
+              {% assign product = all_products[tag] %}
+              {% if product %}
+                <tr>
+                  <td class="text-center">
+                    <button onclick="removeTag('{{ tag }}')" class="btn btn-danger">X</button>
+                  </td>
+                  <td class="text-center">
+                    <a href="{{ product.url }}">
+                      <img src="{{ product.featured_image | product_img_url: 'small' }}" class="img-thumbnail">
+                    </a>
+                  </td>
+                  <td class="text-center">
+                    <a href="{{ product.url }}">{{ product.title }}</a>
+                  </td>
+                  <td class="text-center">{{ product.price | money }}</td>
+                  <td class="text-center">
+                    <a href="/cart/add?id={{ product.variants.first.id }}" class="btn btn-primary">Add to Cart</a>
+                  </td>
+                </tr>
+              {% endif %}
+            {% endfor %}
+
+            {% for tag in customer.tags %}
               {% assign the_test = 'nutthin' %}
               {% capture tag_id %}{{ tag }}{% endcapture %}
               {% assign tag_size = tag_id.size %}
