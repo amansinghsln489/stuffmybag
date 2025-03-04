@@ -31,8 +31,7 @@
         type="button"
         data-toggle="tooltip"
         title="{{ 'products.product.add_to_wishlist' | t }}"
-        data-original-title="{{ 'products.product.add_to_wishlist' | t }}"
-        onclick="this.parentNode.submit(); return false;"
+        onclick="updateWishlist('{{ customer.email }}', '{{ value }}')"
       >
         <span>{{ 'products.product.add_to_wishlist' | t }}</span>
       </button>
@@ -53,3 +52,22 @@
     <span>{{ 'products.product.add_to_wishlist' | t }}</span>
   </button>
 {% endif %}
+<script>
+  function updateWishlist(email, tags) {
+    fetch('/account', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: `form_type=customer&utf8=✓&customer[email]=${encodeURIComponent(email)}&customer[tags]=${encodeURIComponent(tags)}`
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Wishlist updated successfully!');
+        } else {
+            alert('Error updating wishlist.');
+        }
+    })
+    .catch(error => console.error('Error:', error));
+}
+</script>
