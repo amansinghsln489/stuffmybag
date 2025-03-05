@@ -8,7 +8,7 @@
     {% assign is_wishlisted = false %}
   {% endif %}
 
-  <form method="post" action="/pages/wishlist" id="wishlist-form-{{ productID }}" accept-charset="UTF-8">
+  <form method="post" action="/contact" id="wishlist-form-{{ productID }}" accept-charset="UTF-8">
     <input type="hidden" name="form_type" value="contact">
     <input type="hidden" name="utf8" value="✓">
     <input type="text" name="contact[email]" value="{{ customer.email }}">
