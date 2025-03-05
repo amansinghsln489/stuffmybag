@@ -23,20 +23,13 @@
   {% endunless %}
 
   {% if display %}
-    {% form 'customer' %}
-      <input type="hidden" name="contact[email]" value="{{ customer.email }}">
-      <input type="hidden" name="contact[tags]" value="{{ value }}">
-      <button
-        class="button btn-wishlist"
-        type="button"
-        data-toggle="tooltip"
-        title="{{ 'products.product.add_to_wishlist' | t }}"
-        data-original-title="{{ 'products.product.add_to_wishlist' | t }}"
-        onclick="this.parentNode.submit(); return false;"
-      >
-        <span>{{ 'products.product.add_to_wishlist' | t }}</span>
-      </button>
-    {% endform %}
+    <button
+      class="wishlist-button"
+      data-product-id="{{value }}"
+      onclick="toggleWishlist(this)"
+    >
+      ❤️ Add to Wishlist
+    </button>
 
   {% else %}
 
