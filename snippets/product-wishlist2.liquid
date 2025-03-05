@@ -22,7 +22,7 @@
   {% endunless %}
 
   {% if display %}
-    {% form 'customer', id: 'wishlist-form' %}
+    <form id="wishlist-form">
       <input type="hidden" name="contact[email]" value="{{ customer.email }}">
       <input type="hidden" name="contact[tags]" value="{{ value }}">
       <button
@@ -31,11 +31,11 @@
         data-toggle="tooltip"
         title="{{ 'products.product.add_to_wishlist' | t }}"
         data-original-title="{{ 'products.product.add_to_wishlist' | t }}"
-        onclick="submitWishlistForm(event)"
+        onclick="submitWishlistForm()"
       >
         <span>{{ 'products.product.add_to_wishlist' | t }}</span>
       </button>
-    {% endform %}
+    </form>
 
     <!-- Popup Box -->
     <div id="wishlist-popup" class="wishlist-popup">
@@ -44,25 +44,29 @@
     </div>
 
     <script>
-      function submitWishlistForm(event) {
-        event.preventDefault(); // Prevent form submission redirect
-
-        let form = document.getElementById('wishlist-form');
+      function submitWishlistForm() {
+        let form = document.getElementById("wishlist-form");
         let formData = new FormData(form);
+        let email = formData.get("contact[email]");
+        let tags = formData.get("contact[tags]");
 
-        fetch(form.action, {
+        fetch("/account", {
           method: "POST",
-          body: formData
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          body: `form_type=customer&customer[email]=${encodeURIComponent(email)}&customer[tags]=${encodeURIComponent(tags)}`
         })
-        .then(response => response.json())
-        .then(data => {
-          if (data.success) {
+        .then(response => response.text()) // Shopify might return HTML, so we handle text
+        .then(text => {
+          if (text.includes("Thank you")) { // Change condition based on actual response
             showPopup();
           } else {
-            alert("Something went wrong! Please try again.");
+            alert("Something went wrong!");
+            console.log(text);
           }
         })
-        .catch(error => console.error('Error:', error));
+        .catch(error => console.error("Error:", error));
       }
 
       function showPopup() {
