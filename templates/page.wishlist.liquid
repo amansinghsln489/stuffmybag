@@ -25,6 +25,7 @@
 
   function loadWishlistItems() {
     let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    alert(wishlist);
     let tableBody = document.getElementById("wishlist-table-body");
 
     if (wishlist.length === 0) {
