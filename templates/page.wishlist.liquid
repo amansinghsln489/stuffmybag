@@ -16,30 +16,7 @@
                 <td class="text-center">{{ 'wishlist.general.add_cart' | t }}</td>
               </tr>
             </thead>
-            {% if customer %}
-              <h3>Customer Information</h3>
-              <p><strong>ID:</strong> {{ customer.id }}</p>
-              <p>
-                <strong>Name:</strong> {{ customer.first_name }}
-                {{ customer.last_name }}
-              </p>
-              <p><strong>Email:</strong> {{ customer.email }}</p>
-              <p><strong>Phone:</strong> {{ customer.phone }}</p>
-              <p><strong>Orders Count:</strong> {{ customer.orders_count }}</p>
-              <p><strong>Total Spent:</strong> {{ customer.total_spent | money }}</p>
 
-              <h3>Customer Tags:</h3>
-              <ul>
-                {% for tag in customer.body %}
-                  {{ customer.tags | json }}
-                  <li>{{ tag }}</li>
-                {% else %}
-                  <li>No tags found.</li>
-                {% endfor %}
-              </ul>
-            {% else %}
-              <p>No customer logged in.</p>
-            {% endif %}
             {% for tag in customer.tags %}
               {% assign the_test = 'nutthin' %}
               {% capture tag_id %}{{ tag }}{% endcapture %}
