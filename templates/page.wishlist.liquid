@@ -45,9 +45,7 @@
                       {%- else -%}
                         {%- assign display = true -%}
                       {%- endif %}
-                      {% if display and the_test contains product_id %}
-                        {{ display }}
-                      {%- endif %}
+
                       {% if display and the_test contains product_id %}
                         <tbody data-line="{{ forloop.index }}">
                           <tr>
