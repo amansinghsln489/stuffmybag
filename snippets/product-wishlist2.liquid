@@ -23,11 +23,13 @@
   {% endunless %}
 
   {% if display %}
-   <button class="wishlist-button" 
-        data-product-handle="{{ product.handle }}" 
-        onclick="toggleWishlist(this)">
-  ❤️ Add to Wishlist
-</button>
+    <button
+      class="wishlist-button"
+      data-product-handle="{{ product.handle }}"
+      onclick="toggleWishlist(this)"
+    >
+      ❤️ Add to Wishlist
+    </button>
 
   {% else %}
 
@@ -46,20 +48,20 @@
 {% endif %}
 
 <script>
-  <script>
-function toggleWishlist(button) {
-  let productHandle = button.getAttribute("data-product-handle");
-  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
-  if (wishlist.includes(productHandle)) {
-    wishlist = wishlist.filter(handle => handle !== productHandle);
-    button.innerHTML = "❤️ Add to Wishlist";
-  } else {
-    wishlist.push(productHandle);
-    button.innerHTML = "✔ Added to Wishlist";
+  function toggleWishlist(button) {
+    let productHandle = button.getAttribute("data-product-handle");
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+    if (wishlist.includes(productHandle)) {
+      wishlist = wishlist.filter(handle => handle !== productHandle);
+      button.innerHTML = "❤️ Add to Wishlist";
+    } else {
+      wishlist.push(productHandle);
+      button.innerHTML = "✔ Added to Wishlist";
+    }
+
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    updateWishlistCount();
   }
-
-  localStorage.setItem("wishlist", JSON.stringify(wishlist));
-  updateWishlistCount();
-}
 </script>
