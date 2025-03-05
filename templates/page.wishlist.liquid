@@ -23,8 +23,9 @@
               {% capture tag_id %}{{ tag }}{% endcapture %}
 
               {% assign tag_size = tag_id.size %}
-              {{ tag_size }}
+
               {% for tag in customer.tags %}
+                {{ tag }}
                 {% capture cur_tag %}{{ tag }}{% endcapture %}
                 {% if cur_tag contains tag_id %}
                   {% assign difference = tag_size | minus: cur_tag.size %}
