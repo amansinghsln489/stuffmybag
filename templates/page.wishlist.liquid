@@ -32,7 +32,8 @@
     tableBody.innerHTML = '<tr><td colspan="5" class="text-center">Your wishlist is empty.</td></tr>';
     return;
   }
-
+let baseUrl = window.location.origin;
+console.log("Base URL:", baseUrl);
   // Loop through wishlist and fetch product details
   let productRequests = wishlist.map(productId =>
     fetch(`/products/${productId}.json`)
