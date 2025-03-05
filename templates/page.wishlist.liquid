@@ -16,9 +16,8 @@
                 <td class="text-center">{{ 'wishlist.general.add_cart' | t }}</td>
               </tr>
             </thead>
-
+            {{ customer | json }}
             {% for tag in customer.tags %}
-              <p>{{ tag }}</p>
               {% assign the_test = 'nutthin' %}
               {% capture tag_id %}{{ tag }}{% endcapture %}
               {% assign tag_size = tag_id.size %}
