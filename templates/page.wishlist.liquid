@@ -21,7 +21,7 @@
               {% assign the_test = 'nutthin' %}
 
               {% capture tag_id %}{{ tag }}{% endcapture %}
-              {{ tag }}
+              {{ tag_id }}
               {% assign tag_size = tag_id.size %}
               {% for tag in customer.tags %}
                 {% capture cur_tag %}{{ tag }}{% endcapture %}
