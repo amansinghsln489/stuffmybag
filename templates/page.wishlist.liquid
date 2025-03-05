@@ -1,48 +1,66 @@
-{% comment %}
-  Wishlist Page Template
-{% endcomment %}
+{% layout 'theme' %}
 
-<h1>My Wishlist</h1>
-<p id="empty-wishlist">Your wishlist is empty.</p>
-<ul id="wishlist-items"></ul>
+<h1>Your Wishlist</h1>
+
+<div id="wishlist-container">
+  <p>Loading your wishlist...</p>
+</div>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
+    loadWishlistItems();
+  });
+
+  function loadWishlistItems() {
     let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-    let wishlistContainer = document.getElementById("wishlist-items");
-    let emptyMessage = document.getElementById("empty-wishlist");
+    let container = document.getElementById("wishlist-container");
+    container.innerHTML = ""; // Clear existing content
 
     if (wishlist.length === 0) {
-      emptyMessage.style.display = "block";
-      wishlistContainer.style.display = "none";
-    } else {
-      emptyMessage.style.display = "none";
-      wishlistContainer.style.display = "block";
+      container.innerHTML = "<p>Your wishlist is empty.</p>";
+      return;
+    }
 
-      wishlist.forEach(productId => {
-        fetch(`/products/${productId}.json`)
-          .then(response => response.json())
-          .then(data => {
-            let product = data.product;
-            let li = document.createElement("li");
-            li.innerHTML = `
+    wishlist.forEach(productId => {
+      fetch(`/products/${productId}.json`)
+        .then(response => response.json())
+        .then(data => {
+          let product = data.product;
+          let productHTML = `
+            <div class="wishlist-item">
               <a href="${product.url}">
                 <img src="${product.images[0].src}" alt="${product.title}" width="100">
-                <p>${product.title}</p>
-                <p>${product.variants[0].price} {{ shop.currency }}</p>
+                <h3>${product.title}</h3>
               </a>
+              <p>${product.price | money_with_currency}</p>
               <button onclick="removeFromWishlist('${product.id}')">Remove</button>
-            `;
-            wishlistContainer.appendChild(li);
-          });
-      });
-    }
-  });
+            </div>
+          `;
+          container.innerHTML += productHTML;
+        })
+        .catch(error => console.error("Error loading product:", error));
+    });
+  }
 
   function removeFromWishlist(productId) {
     let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
     wishlist = wishlist.filter(id => id !== productId);
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
-    location.reload();
+    loadWishlistItems(); // Refresh wishlist display
   }
 </script>
+
+<style>
+  .wishlist-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  .wishlist-item img {
+    display: block;
+    margin-bottom: 5px;
+  }
+  .wishlist-item h3 {
+    margin: 0;
+  }
+</style>
