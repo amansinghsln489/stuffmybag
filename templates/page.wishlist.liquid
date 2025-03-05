@@ -1,101 +1,127 @@
-<h1>My Wishlist</h1>
-<div class="table-responsive">
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <td class="text-center">Remove</td>
-        <td class="text-center">Image</td>
-        <td class="text-center">Product Name</td>
-        <td class="text-center">Unit Price</td>
-        <td class="text-center">Add to Cart</td>
-      </tr>
-    </thead>
-    <tbody id="wishlist-table-body">
-      <tr>
-        <td colspan="5" class="text-center">Loading wishlist...</td>
-      </tr>
-    </tbody>
-  </table>
+<!-- wishlist-area start -->
+<div class="container">
+  {% include 'breadcrumb' %}
+  <div class="row">
+    <div id="content" class="col-sm-12">
+      <h1>{{ page_title }}</h1>
+      {% if customer %}
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <td class="text-center">{{ 'cart.general.remove' | t }}</td>
+                <td class="text-center">{{ 'cart.general.heading_image' | t }}</td>
+                <td class="text-center">{{ 'cart.general.heading_product_name' | t }}</td>
+                <td class="text-center">{{ 'cart.general.heading_unit_price' | t }}</td>
+                <td class="text-center">{{ 'wishlist.general.add_cart' | t }}</td>
+              </tr>
+            </thead>
+            {% for tag in customer.tags %}
+              {% assign the_test = 'nutthin' %}
+              {% capture tag_id %}{{ tag }}{% endcapture %}
+              {% assign tag_size = tag_id.size %}
+              {% for tag in customer.tags %}
+                {% capture cur_tag %}{{ tag }}{% endcapture %}
+                {% if cur_tag contains tag_id %}
+                  {% assign difference = tag_size | minus: cur_tag.size %}
+                  {% if difference == 0 %}
+                    {% assign the_test = tag_id %}
+                  {% else %}
+                    {% assign the_test = 'nutthin' %}
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+
+              {% for collection in collections %}
+                {% paginate collection.products by collection.all_products_count %}
+                  {% for product in collection.products %}
+                    {% capture product_id %}{{ product.id }}{% endcapture %}
+                    {% unless used contains product_id %}
+                      {% capture diff %}{{ tag_size | minus:product_id.size | money_without_currency | times:100 | divided_by:2 }}{% endcapture %}
+                      {% assign check = diff | split: '.' %}
+                      {% if check[1] contains '5' -%}
+                        {%- assign display = false -%}
+                      {%- else -%}
+                        {%- assign display = true -%}
+                      {%- endif %}
+                      {% if display and the_test contains product_id %}
+                        <tbody data-line="{{ forloop.index }}">
+                          <tr>
+                            <td class="text-center btn-remove-product">
+                              <a
+                                type="button"
+                                data-toggle="tooltip"
+                                title="Remove"
+                                class="btn btn-danger"
+                                onclick="removeTag('x{{ tag_id }}')"
+                                data-line="{{ forloop.index }}"
+                                ><i class="fa fa-times-circle"></i>
+                              </a>
+                            </td>
+                            <td class="text-center">
+                              <a href="{{ product.url }}">
+                                <img
+                                  src="{{ product.featured_image | product_img_url: 'small' }}"
+                                  alt="{{ product.title}}"
+                                  class="img-thumbnail"
+                                >
+                              </a>
+                            </td>
+                            <td class="text-center">
+                              <h5>
+                                <a href="{{ product.url }}">{{ product.title }}</a>
+                              </h5>
+                            </td>
+                            <td class="text-center">
+                              <span class="price-product">{{ product.price | money }}</span>
+                            </td>
+                            <td class="text-center">
+                              <a
+                                href="#add-to-cart"
+                                class="btn btn-primary"
+                                onclick="addToCart('{{ product.variants.first.id }}')"
+                              >
+                                {{- 'wishlist.general.add_cart' | t -}}
+                              </a>
+                            </td>
+                          </tr>
+                        </tbody>
+                        {% capture used %}{{ product_id }} {{ used }}{% endcapture %}
+                      {% endif %}
+                    {% endunless %}
+                  {% endfor %}
+                {% endpaginate %}
+              {% endfor %}
+            {% endfor %}
+            <form method="post" action="/contact" id="remove" accept-charset="UTF-8">
+              <input name="form_type" type="hidden" value="customer">
+              <input name="utf8" type="hidden" value="✓">
+              <input type="hidden" name="contact[email]" value="{{ customer.email }}">
+              <input type="hidden" name="contact[tags]" id="remove-value" value="">
+            </form>
+            <form action="/cart/add" id="add-variant" method="post">
+              <input type="hidden" name="id" id="product-select" value="">
+            </form>
+
+            <script type="text/javascript">
+              function removeTag(tagID) {
+                document.getElementById('remove-value').value = tagID;
+                document.getElementById('remove').submit();
+              }
+              function addToCart(variantID) {
+                document.getElementById('product-select').value = variantID;
+                document.getElementById('add-variant').submit();
+              }
+            </script>
+          </table>
+        </div>
+      {% else %}
+        <p class="text-center">
+          {{ 'wishlist.general.create_wishlist' | t }}
+          <a href="/account/login">{{ 'wishlist.general.login' | t }}</a> {{ 'wishlist.general.or' | t }}
+          <a href="/account/register">{{ 'wishlist.general.register' | t }}</a>
+        </p>
+      {% endif %}
+    </div>
+  </div>
 </div>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-  
-    loadWishlistItems();
-  });
-
- function loadWishlistItems() {
-  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-  let tableBody = document.getElementById("wishlist-table-body");
-
-  if (wishlist.length === 0) {
-    tableBody.innerHTML = '<tr><td colspan="5" class="text-center">Your wishlist is empty.</td></tr>';
-    return;
-  }
-let baseUrl = window.location.origin;
-
-  // Loop through wishlist and fetch product details
-  let productRequests = wishlist.map(productId =>
-    fetch(`/products/${productId}.json`)
-      .then(response => {
-       let url = `${baseUrl}/products/${productId}.json`;  
-  console.log("Fetching URL:", url);
-        console.log("Fetching:", `/products/${productId}.json`);
-        return response.ok ? response.json() : null;
-      })
-      .then(data => data ? data.product : null) // Return product data only
-      .catch(error => {
-        console.error(`Error fetching product ${productId}:`, error);
-        return null;
-      })
-  );
-
-  // Wait for all fetch requests to complete
-  Promise.all(productRequests).then(products => {
-    let validProducts = products.filter(product => product !== null); // Remove null responses
-
-    console.log("Valid Products:", validProducts); // Debugging
-
-    if (validProducts.length === 0) {
-      tableBody.innerHTML = '<tr><td colspan="5" class="text-center">No valid products found.</td></tr>';
-      return;
-    }
-
-    // Loop through valid products and generate HTML
-    let html = validProducts.map(product => `
-      <tr>
-        <td class="text-center">
-          <button class="btn btn-danger" onclick="removeFromWishlist('${product.id}')">
-            <i class="fa fa-times-circle"></i>
-          </button>
-        </td>
-        <td class="text-center">
-          <a href="${product.url}">
-            <img src="${product.images[0]?.src || 'default-image.jpg'}" alt="${product.title}" class="img-thumbnail" width="80">
-          </a>
-        </td>
-        <td class="text-center"><a href="${product.url}">${product.title}</a></td>
-        <td class="text-center">${product.variants[0]?.price || 'N/A'}</td>
-        <td class="text-center">
-          <button class="btn btn-primary" onclick="addToCart('${product.variants[0]?.id || ''}')">Add to Cart</button>
-        </td>
-      </tr>
-    `).join("");
-
-    tableBody.innerHTML = html;
-  });
-}
-
-
-  function removeFromWishlist(productId) {
-    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-    wishlist = wishlist.filter(id => id !== productId);
-    localStorage.setItem("wishlist", JSON.stringify(wishlist));
-    loadWishlistItems();
-  }
-
-  function addToCart(variantID) {
-    document.getElementById('product-select').value = variantID;
-    document.getElementById('add-variant').submit();
-  }
-</script>
