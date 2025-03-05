@@ -32,13 +32,16 @@
     return;
   }
 
-  console.log("Wishlist IDs:", wishlist); // Debugging line
+  console.log("Wishlist IDs:", wishlist); // Check if multiple IDs exist
 
   let productRequests = wishlist.map(productId => {
     return fetch(`/products/${productId}.json`)
-      .then(response => response.ok ? response.json() : null)
+      .then(response => {
+        console.log("Fetching:", `/products/${productId}.json`); // Debug each request
+        return response.ok ? response.json() : null;
+      })
       .then(data => {
-        console.log("Fetched Product:", data); // Debugging line
+        console.log("Fetched Product Data:", data); // Debug response data
         return data ? data.product : null;
       })
       .catch(error => {
@@ -48,9 +51,17 @@
   });
 
   Promise.all(productRequests).then(products => {
-    console.log("Final Products:", products); // Debugging line
-    let html = products
-      .filter(product => product) // Remove null responses
+    console.log("Final Products Array:", products); // Debug final product array
+
+    let validProducts = products.filter(product => product);
+    console.log("Valid Products:", validProducts); // Ensure multiple products exist
+
+    if (validProducts.length === 0) {
+      tableBody.innerHTML = '<tr><td colspan="5" class="text-center">No valid products found.</td></tr>';
+      return;
+    }
+
+    let html = validProducts
       .map(product => `
         <tr>
           <td class="text-center">
@@ -74,6 +85,7 @@
     tableBody.innerHTML = html;
   });
 }
+
 
 
   function removeFromWishlist(productId) {
