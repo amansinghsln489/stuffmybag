@@ -49,6 +49,8 @@
         let formData = new FormData(form);
         let email = formData.get("contact[email]");
         let tags = formData.get("contact[tags]");
+        console.log(tags);
+         console.log(email);
 
         fetch("/account", {
           method: "POST",
