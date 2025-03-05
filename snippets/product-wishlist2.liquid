@@ -13,6 +13,7 @@
 
   {% unless value.size == 0 %}
     {% assign check = tag.size | minus: productID.size | modulo: 2 %}
+    {% comment %}{% capture check %}{{ value.size | minus:productID.size | money_without_currency | times:100 | divided_by:2 }}{% endcapture %}{% endcomment %}
     {% assign check = check | split: '.' %}
     {% if check[1] contains '5' %}
       {% assign display = false -%}
@@ -22,7 +23,7 @@
   {% endunless %}
 
   {% if display %}
-    <form id="wishlist-form">
+    {% form 'customer' %}
       <input type="hidden" name="contact[email]" value="{{ customer.email }}">
       <input type="hidden" name="contact[tags]" value="{{ value }}">
       <button
@@ -31,76 +32,14 @@
         data-toggle="tooltip"
         title="{{ 'products.product.add_to_wishlist' | t }}"
         data-original-title="{{ 'products.product.add_to_wishlist' | t }}"
-        onclick="submitWishlistForm()"
+        onclick="this.parentNode.submit(); return false;"
       >
         <span>{{ 'products.product.add_to_wishlist' | t }}</span>
       </button>
-    </form>
+    {% endform %}
 
-    <!-- Popup Box -->
-    <div id="wishlist-popup" class="wishlist-popup">
-      <p>✅ Product added to wishlist!</p>
-      <button onclick="closePopup()">OK</button>
-    </div>
+  {% else %}
 
-    <script>
-      function submitWishlistForm() {
-        let form = document.getElementById("wishlist-form");
-        let formData = new FormData(form);
-        let email = formData.get("contact[email]");
-        let tags = formData.get("contact[tags]");
-        console.log(tags);
-         console.log(email);
-
-        fetch("/account", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-          },
-          body: `form_type=customer&customer[email]=${encodeURIComponent(email)}&customer[tags]=${encodeURIComponent(tags)}`
-        })
-        .then(response => response.text()) // Shopify might return HTML, so we handle text
-        .then(text => {
-          if (text.includes("Thank you")) { // Change condition based on actual response
-            showPopup();
-          } else {
-            alert("Something went wrong!");
-            console.log(text);
-          }
-        })
-        .catch(error => console.error("Error:", error));
-      }
-
-      function showPopup() {
-        document.getElementById("wishlist-popup").style.display = "block";
-      }
-
-      function closePopup() {
-        document.getElementById("wishlist-popup").style.display = "none";
-      }
-    </script>
-
-    <style>
-      .wishlist-popup {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: white;
-        padding: 20px;
-        border: 1px solid #ccc;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        text-align: center;
-      }
-      .wishlist-popup button {
-        background: #007bff;
-        color: white;
-        border: none;
-        padding: 10px;
-        cursor: pointer;
-      }
-    </style>
   {% endif %}
 {% else %}
   <button
