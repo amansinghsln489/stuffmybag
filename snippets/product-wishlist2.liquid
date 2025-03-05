@@ -23,7 +23,7 @@
   {% endunless %}
 
   {% if display %}
-    {% form 'customer' %}
+    {% form 'customer', action: '/pages/wishlist', method: 'POST' %}
       <input type="hidden" name="contact[email]" value="{{ customer.email }}">
       <input type="hidden" name="contact[tags]" value="{{ value }}">
       <button
@@ -32,11 +32,20 @@
         data-toggle="tooltip"
         title="{{ 'products.product.add_to_wishlist' | t }}"
         data-original-title="{{ 'products.product.add_to_wishlist' | t }}"
-        onclick="location.href='/pages/wishlist'"
+        onclick="submitForm(this)"
       >
         <span>{{ 'products.product.add_to_wishlist' | t }}</span>
       </button>
     {% endform %}
+
+    <script>
+      function submitForm(button) {
+        let form = button.closest('form');
+        if (form) {
+          form.submit(); // Submits the form and redirects to the action URL
+        }
+      }
+    </script>
 
   {% else %}
 
