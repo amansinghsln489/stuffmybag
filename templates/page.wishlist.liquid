@@ -16,8 +16,8 @@
                 <td class="text-center">{{ 'wishlist.general.add_cart' | t }}</td>
               </tr>
             </thead>
-            {% assign the_test = 'nutthin' %}
-            {{ the_test }}
+            {% capture tag_id %}{{ tag }}{% endcapture %}
+            {{ tag_id }}
             {% for tag in customer.tags %}
               {% assign the_test = 'nutthin' %}
 
