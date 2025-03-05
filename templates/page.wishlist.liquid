@@ -17,7 +17,12 @@
               </tr>
             </thead>
             {% for collection in collections %}
-              {{ collection }}
+              <p>Collection Title: {{ collection.title }}</p>
+              <p>Collection Handle: {{ collection.handle }}</p>
+              <p>
+                Collection URL: <a href="{{ collection.url }}">{{ collection.title }}</a>
+              </p>
+              <hr>
             {% endfor %}
             {% for tag in customer.tags %}
               {% assign the_test = 'nutthin' %}
