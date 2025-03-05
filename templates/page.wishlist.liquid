@@ -33,12 +33,12 @@
     return;
   }
 let baseUrl = window.location.origin;
-console.log("Base URL:", baseUrl);
+
   // Loop through wishlist and fetch product details
   let productRequests = wishlist.map(productId =>
     fetch(`/products/${productId}.json`)
       .then(response => {
-        let url = `/products/${productId}.json`;  
+       let url = `${baseUrl}/products/${productId}.json`;  
   console.log("Fetching URL:", url);
         console.log("Fetching:", `/products/${productId}.json`);
         return response.ok ? response.json() : null;
