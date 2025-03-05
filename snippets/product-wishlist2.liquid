@@ -40,45 +40,44 @@
     <span>{{ 'products.product.add_to_wishlist' | t }}</span>
   </button>
 {% endif %}
+
 <script>
-    <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      loadWishlist();
+  document.addEventListener("DOMContentLoaded", function () {
+    loadWishlist();
 
-      function toggleWishlist(button) {
+    function toggleWishlist(button) {
+      let productId = button.getAttribute("data-product-id");
+      let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+      if (wishlist.includes(productId)) {
+        wishlist = wishlist.filter(id => id !== productId);
+        button.innerHTML = "❤️ Add to Wishlist";
+      } else {
+        wishlist.push(productId);
+        button.innerHTML = "✔ Added to Wishlist";
+      }
+
+      localStorage.setItem("wishlist", JSON.stringify(wishlist));
+      updateWishlistCount();
+    }
+
+    function loadWishlist() {
+      let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+      document.querySelectorAll(".wishlist-button").forEach(button => {
         let productId = button.getAttribute("data-product-id");
-        let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-
         if (wishlist.includes(productId)) {
-          wishlist = wishlist.filter(id => id !== productId);
-          button.innerHTML = "❤️ Add to Wishlist";
-        } else {
-          wishlist.push(productId);
           button.innerHTML = "✔ Added to Wishlist";
         }
+      });
+      updateWishlistCount();
+    }
 
-        localStorage.setItem("wishlist", JSON.stringify(wishlist));
-        updateWishlistCount();
+    function updateWishlistCount() {
+      let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+      let countElement = document.getElementById("wishlist-count");
+      if (countElement) {
+        countElement.textContent = wishlist.length;
       }
-
-      function loadWishlist() {
-        let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-        document.querySelectorAll(".wishlist-button").forEach(button => {
-          let productId = button.getAttribute("data-product-id");
-          if (wishlist.includes(productId)) {
-            button.innerHTML = "✔ Added to Wishlist";
-          }
-        });
-        updateWishlistCount();
-      }
-
-      function updateWishlistCount() {
-        let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-        let countElement = document.getElementById("wishlist-count");
-        if (countElement) {
-          countElement.textContent = wishlist.length;
-        }
-      }
-    });
-  </script>
+    }
+  });
 </script>
