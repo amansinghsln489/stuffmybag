@@ -23,13 +23,7 @@
   {% endunless %}
 
   {% if display %}
-    <button
-      class="wishlist-button"
-      data-product-id="{{value }}"
-      onclick="toggleWishlist(this)"
-    >
-      ❤️ Add to Wishlist
-    </button>
+    <button class="wishlist-button" data-product-id="{{ value }}">❤️ Add to Wishlist</button>
 
   {% else %}
 
