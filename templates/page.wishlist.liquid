@@ -44,8 +44,8 @@
                     {% capture product_id %}{{ product.id }}{% endcapture %}
                     {% assign used = '' %}
                     {% unless used contains product_id %}
-                      <pre>used: {{ product_id }}</pre>
                       {% capture diff %}{{ tag_size | minus:product_id.size | money_without_currency | times:100 | divided_by:2 }}{% endcapture %}
+                      <pre>Calculated Diff: {{ diff }}</pre>
                       {% assign check = diff | split: '.' %}
                       {% if check[1] contains '5' -%}
                         {{ product_id }}
