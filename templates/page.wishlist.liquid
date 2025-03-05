@@ -45,6 +45,7 @@
                         {%- assign display = true -%}
                       {%- endif %}
                       {% if display and the_test contains product_id %}
+                        <p>Product ID: {{ product_id }}</p>
                         <tbody data-line="{{ forloop.index }}">
                           <tr>
                             <td class="text-center btn-remove-product">
