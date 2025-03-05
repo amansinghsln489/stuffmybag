@@ -1,5 +1,3 @@
-{% layout 'theme' %}
-
 <h1>Your Wishlist</h1>
 
 <div id="wishlist-container">
@@ -7,60 +5,50 @@
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    loadWishlistItems();
+document.addEventListener("DOMContentLoaded", function () {
+  loadWishlistItems();
+});
+
+function loadWishlistItems() {
+  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+  let container = document.getElementById("wishlist-container");
+  container.innerHTML = ""; // Clear existing content
+
+  if (wishlist.length === 0) {
+    container.innerHTML = "<p>Your wishlist is empty.</p>";
+    return;
+  }
+
+  wishlist.forEach(handle => {
+    fetch(`/products/${handle}.json`) // Use handle instead of ID
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Product not found: ${handle}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        let product = data.product;
+        let productHTML = `
+          <div class="wishlist-item">
+            <a href="${product.url}">
+              <img src="${product.images[0].src}" alt="${product.title}" width="100">
+              <h3>${product.title}</h3>
+            </a>
+            <p>${product.variants[0].price} {{ shop.currency }}</p>
+            <button onclick="removeFromWishlist('${handle}')">Remove</button>
+          </div>
+        `;
+        container.innerHTML += productHTML;
+      })
+      .catch(error => console.error("Error loading product:", error));
   });
+}
 
-  function loadWishlistItems() {
-    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-    let container = document.getElementById("wishlist-container");
-    container.innerHTML = ""; // Clear existing content
-
-    if (wishlist.length === 0) {
-      container.innerHTML = "<p>Your wishlist is empty.</p>";
-      return;
-    }
-
-    wishlist.forEach(productId => {
-      fetch(`/products/${productId}.json`)
-        .then(response => response.json())
-        .then(data => {
-          let product = data.product;
-          let productHTML = `
-            <div class="wishlist-item">
-              <a href="${product.url}">
-                <img src="${product.images[0].src}" alt="${product.title}" width="100">
-                <h3>${product.title}</h3>
-              </a>
-              <p>${product.price | money_with_currency}</p>
-              <button onclick="removeFromWishlist('${product.id}')">Remove</button>
-            </div>
-          `;
-          container.innerHTML += productHTML;
-        })
-        .catch(error => console.error("Error loading product:", error));
-    });
-  }
-
-  function removeFromWishlist(productId) {
-    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-    wishlist = wishlist.filter(id => id !== productId);
-    localStorage.setItem("wishlist", JSON.stringify(wishlist));
-    loadWishlistItems(); // Refresh wishlist display
-  }
+function removeFromWishlist(handle) {
+  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+  wishlist = wishlist.filter(h => h !== handle);
+  localStorage.setItem("wishlist", JSON.stringify(wishlist));
+  loadWishlistItems(); // Refresh wishlist display
+}
 </script>
-
-<style>
-  .wishlist-item {
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-  .wishlist-item img {
-    display: block;
-    margin-bottom: 5px;
-  }
-  .wishlist-item h3 {
-    margin: 0;
-  }
-</style>
