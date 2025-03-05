@@ -13,7 +13,6 @@
 
   {% unless value.size == 0 %}
     {% assign check = tag.size | minus: productID.size | modulo: 2 %}
-    {% comment %}{% capture check %}{{ value.size | minus:productID.size | money_without_currency | times:100 | divided_by:2 }}{% endcapture %}{% endcomment %}
     {% assign check = check | split: '.' %}
     {% if check[1] contains '5' %}
       {% assign display = false -%}
@@ -23,7 +22,7 @@
   {% endunless %}
 
   {% if display %}
-    {% form 'customer', action: '/pages/wishlist', method: 'POST' %}
+    {% form 'customer', action: '/pages/wishlist', method: 'POST', id: 'wishlist-form' %}
       <input type="hidden" name="contact[email]" value="{{ customer.email }}">
       <input type="hidden" name="contact[tags]" value="{{ value }}">
       <button
@@ -32,23 +31,70 @@
         data-toggle="tooltip"
         title="{{ 'products.product.add_to_wishlist' | t }}"
         data-original-title="{{ 'products.product.add_to_wishlist' | t }}"
-        onclick="submitForm(this)"
+        onclick="submitWishlistForm(event)"
       >
         <span>{{ 'products.product.add_to_wishlist' | t }}</span>
       </button>
     {% endform %}
 
+    <!-- Popup Box -->
+    <div id="wishlist-popup" class="wishlist-popup">
+      <p>✅ Product added to wishlist!</p>
+      <button onclick="closePopup()">OK</button>
+    </div>
+
     <script>
-      function submitForm(button) {
-        let form = button.closest('form');
-        if (form) {
-          form.submit(); // Submits the form and redirects to the action URL
-        }
+      function submitWishlistForm(event) {
+        event.preventDefault(); // Prevent form submission redirect
+
+        let form = document.getElementById('wishlist-form');
+        let formData = new FormData(form);
+
+        fetch(form.action, {
+          method: "POST",
+          body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            showPopup();
+          } else {
+            alert("Something went wrong! Please try again.");
+          }
+        })
+        .catch(error => console.error('Error:', error));
+      }
+
+      function showPopup() {
+        document.getElementById("wishlist-popup").style.display = "block";
+      }
+
+      function closePopup() {
+        document.getElementById("wishlist-popup").style.display = "none";
       }
     </script>
 
-  {% else %}
-
+    <style>
+      .wishlist-popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 20px;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+      .wishlist-popup button {
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+      }
+    </style>
   {% endif %}
 {% else %}
   <button
