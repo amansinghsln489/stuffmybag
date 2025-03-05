@@ -32,6 +32,7 @@
               <h3>Customer Tags:</h3>
               <ul>
                 {% for tag in customer.tags %}
+                  {{ customer.tags | json }}
                   <li>{{ tag }}</li>
                 {% else %}
                   <li>No tags found.</li>
