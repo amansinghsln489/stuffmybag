@@ -80,9 +80,9 @@ async function loadWishlist() {
 function toggleWishlist(button) {
   let productId = button.getAttribute("data-product-id");
   let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-  alert(wishlist);
+ 
   let isInWishlist = wishlist.includes(productId);
-
+ alert(isInWishlist);
   if (isInWishlist) {
     wishlist = wishlist.filter(id => id !== productId);
   } else {
