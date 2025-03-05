@@ -11,8 +11,8 @@
   <form method="post" action="/contact" id="wishlist-form-{{ productID }}" accept-charset="UTF-8">
     <input type="hidden" name="form_type" value="customer">
     <input type="hidden" name="utf8" value="✓">
-    <input type="hidden" name="contact[email]" value="{{ customer.email }}">
-    <input type="hidden" name="contact[tags]" id="wishlist-input-{{ productID }}" value="">
+    <input type="text" name="contact[email]" value="{{ customer.email }}">
+    <input type="text" name="contact[tags]" id="wishlist-input-{{ productID }}" value="">
 
     <button
       type="button"
