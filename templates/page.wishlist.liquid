@@ -23,66 +23,65 @@
     loadWishlistItems();
   });
 
-  function loadWishlistItems() {
-    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-    alert(wishlist);
-    let tableBody = document.getElementById("wishlist-table-body");
+ function loadWishlistItems() {
+  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+  let tableBody = document.getElementById("wishlist-table-body");
 
-    if (wishlist.length === 0) {
-      tableBody.innerHTML = '<tr><td colspan="5" class="text-center">Your wishlist is empty.</td></tr>';
+  if (wishlist.length === 0) {
+    tableBody.innerHTML = '<tr><td colspan="5" class="text-center">Your wishlist is empty.</td></tr>';
+    return;
+  }
+
+  // Loop through wishlist and fetch product details
+  let productRequests = wishlist.map(productId =>
+    fetch(`/products/${productId}.json`)
+      .then(response => {
+        console.log("Fetching:", `/products/${productId}.json`);
+        return response.ok ? response.json() : null;
+      })
+      .then(data => data ? data.product : null) // Return product data only
+      .catch(error => {
+        console.error(`Error fetching product ${productId}:`, error);
+        return null;
+      })
+  );
+
+  // Wait for all fetch requests to complete
+  Promise.all(productRequests).then(products => {
+    let validProducts = products.filter(product => product !== null); // Remove null responses
+
+    console.log("Valid Products:", validProducts); // Debugging
+
+    if (validProducts.length === 0) {
+      tableBody.innerHTML = '<tr><td colspan="5" class="text-center">No valid products found.</td></tr>';
       return;
     }
 
-    console.log("Wishlist IDs:", wishlist); // Debug wishlist IDs
+    // Loop through valid products and generate HTML
+    let html = validProducts.map(product => `
+      <tr>
+        <td class="text-center">
+          <button class="btn btn-danger" onclick="removeFromWishlist('${product.id}')">
+            <i class="fa fa-times-circle"></i>
+          </button>
+        </td>
+        <td class="text-center">
+          <a href="${product.url}">
+            <img src="${product.images[0]?.src || 'default-image.jpg'}" alt="${product.title}" class="img-thumbnail" width="80">
+          </a>
+        </td>
+        <td class="text-center"><a href="${product.url}">${product.title}</a></td>
+        <td class="text-center">${product.variants[0]?.price || 'N/A'}</td>
+        <td class="text-center">
+          <button class="btn btn-primary" onclick="addToCart('${product.variants[0]?.id || ''}')">Add to Cart</button>
+        </td>
+      </tr>
+    `).join("");
 
-    let productRequests = wishlist.map(productId =>
-      fetch(`/products/${productId}.json`)
-        .then(response => {
-          console.log("Fetching:", `/products/${productId}.json`); // Debug each request
-          return response.ok ? response.json() : null;
-        })
-        .then(data => (data ? data.product : null))
-        .catch(error => {
-          console.error("Error fetching product:", error);
-          return null;
-        })
-    );
+    tableBody.innerHTML = html;
+  });
+}
 
-    Promise.all(productRequests).then(products => {
-      console.log("Final Products Array:", products); // Debug product array
-
-      let validProducts = products.filter(product => product); // Remove null values
-
-      if (validProducts.length === 0) {
-        tableBody.innerHTML = '<tr><td colspan="5" class="text-center">No valid products found.</td></tr>';
-        return;
-      }
-
-      let html = validProducts
-        .map(product => `
-          <tr>
-            <td class="text-center">
-              <button class="btn btn-danger" onclick="removeFromWishlist('${product.id}')">
-                <i class="fa fa-times-circle"></i>
-              </button>
-            </td>
-            <td class="text-center">
-              <a href="${product.url}">
-                <img src="${product.images[0]?.src || 'default.jpg'}" alt="${product.title}" class="img-thumbnail" width="80">
-              </a>
-            </td>
-            <td class="text-center"><a href="${product.url}">${product.title}</a></td>
-            <td class="text-center">${product.variants[0]?.price || 'N/A'}</td>
-            <td class="text-center">
-              <button class="btn btn-primary" onclick="addToCart('${product.variants[0]?.id || ''}')">Add to Cart</button>
-            </td>
-          </tr>
-        `)
-        .join("");
-
-      tableBody.innerHTML = html; // Set the entire table content at once
-    });
-  }
 
   function removeFromWishlist(productId) {
     let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
