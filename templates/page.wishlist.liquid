@@ -28,8 +28,8 @@
                 {% capture cur_tag %}{{ tag }}{% endcapture %}
 
                 {% if cur_tag contains tag_id %}
-                  {{ cur_tag }}
                   {% assign difference = tag_size | minus: cur_tag.size %}
+                  {{ difference }}
                   {% if difference == 0 %}
                     {% assign the_test = tag_id %}
                   {% else %}
