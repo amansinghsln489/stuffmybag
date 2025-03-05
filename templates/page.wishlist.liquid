@@ -18,7 +18,7 @@
             </thead>
             {% for collection in collections %}
               {% for product in collection.products %}
-                {{ product }}
+                {{ product.id }}
                 <hr>
               {% endfor %}
             {% endfor %}
