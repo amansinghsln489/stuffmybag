@@ -16,7 +16,9 @@
                 <td class="text-center">{{ 'wishlist.general.add_cart' | t }}</td>
               </tr>
             </thead>
-
+            {% for collection in collections %}
+              {{ collection }}
+            {% endfor %}
             {% for tag in customer.tags %}
               {% assign the_test = 'nutthin' %}
 
@@ -33,7 +35,6 @@
                   {% endif %}
                 {% endif %}
               {% endfor %}
-
               {% for collection in collections %}
                 {% paginate collection.products by collection.all_products_count %}
                   {% for product in collection.products %}
