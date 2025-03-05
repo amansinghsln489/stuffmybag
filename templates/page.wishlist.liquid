@@ -24,47 +24,57 @@
   });
 
   function loadWishlistItems() {
-    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-    let tableBody = document.getElementById("wishlist-table-body");
+  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+  let tableBody = document.getElementById("wishlist-table-body");
 
-    if (wishlist.length === 0) {
-      tableBody.innerHTML = '<tr><td colspan="5" class="text-center">Your wishlist is empty.</td></tr>';
-      return;
-    }
-
-    let productRequests = wishlist.map(productId => {
-      return fetch(`/products/${productId}.json`)
-        .then(response => response.ok ? response.json() : null)
-        .then(data => data ? data.product : null)
-        .catch(() => null);
-    });
-
-    Promise.all(productRequests).then(products => {
-      let html = products
-        .filter(product => product) // Remove null responses
-        .map(product => `
-          <tr>
-            <td class="text-center">
-              <button class="btn btn-danger" onclick="removeFromWishlist('${product.id}')">
-                <i class="fa fa-times-circle"></i>
-              </button>
-            </td>
-            <td class="text-center">
-              <a href="${product.url}">
-                <img src="${product.images[0].src}" alt="${product.title}" class="img-thumbnail" width="80">
-              </a>
-            </td>
-            <td class="text-center"><a href="${product.url}">${product.title}</a></td>
-            <td class="text-center">${product.variants[0].price}</td>
-            <td class="text-center">
-              <button class="btn btn-primary" onclick="addToCart('${product.variants[0].id}')">Add to Cart</button>
-            </td>
-          </tr>
-        `).join("");
-
-      tableBody.innerHTML = html;
-    });
+  if (wishlist.length === 0) {
+    tableBody.innerHTML = '<tr><td colspan="5" class="text-center">Your wishlist is empty.</td></tr>';
+    return;
   }
+
+  console.log("Wishlist IDs:", wishlist); // Debugging line
+
+  let productRequests = wishlist.map(productId => {
+    return fetch(`/products/${productId}.json`)
+      .then(response => response.ok ? response.json() : null)
+      .then(data => {
+        console.log("Fetched Product:", data); // Debugging line
+        return data ? data.product : null;
+      })
+      .catch(error => {
+        console.error("Error fetching product:", error);
+        return null;
+      });
+  });
+
+  Promise.all(productRequests).then(products => {
+    console.log("Final Products:", products); // Debugging line
+    let html = products
+      .filter(product => product) // Remove null responses
+      .map(product => `
+        <tr>
+          <td class="text-center">
+            <button class="btn btn-danger" onclick="removeFromWishlist('${product.id}')">
+              <i class="fa fa-times-circle"></i>
+            </button>
+          </td>
+          <td class="text-center">
+            <a href="${product.url}">
+              <img src="${product.images[0].src}" alt="${product.title}" class="img-thumbnail" width="80">
+            </a>
+          </td>
+          <td class="text-center"><a href="${product.url}">${product.title}</a></td>
+          <td class="text-center">${product.variants[0].price}</td>
+          <td class="text-center">
+            <button class="btn btn-primary" onclick="addToCart('${product.variants[0].id}')">Add to Cart</button>
+          </td>
+        </tr>
+      `).join("");
+
+    tableBody.innerHTML = html;
+  });
+}
+
 
   function removeFromWishlist(productId) {
     let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
