@@ -1,6 +1,21 @@
 <h1>My Wishlist</h1>
-<div id="wishlist-container">
-  <p>Loading wishlist...</p>
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <td class="text-center">Remove</td>
+        <td class="text-center">Image</td>
+        <td class="text-center">Product Name</td>
+        <td class="text-center">Unit Price</td>
+        <td class="text-center">Add to Cart</td>
+      </tr>
+    </thead>
+    <tbody id="wishlist-table-body">
+      <tr>
+        <td colspan="5" class="text-center">Loading wishlist...</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 <script>
@@ -10,36 +25,44 @@
 
   function loadWishlistItems() {
     let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-    let container = document.getElementById("wishlist-container");
+    let tableBody = document.getElementById("wishlist-table-body");
 
     if (wishlist.length === 0) {
-      container.innerHTML = "<p>Your wishlist is empty.</p>";
+      tableBody.innerHTML = '<tr><td colspan="5" class="text-center">Your wishlist is empty.</td></tr>';
       return;
     }
 
     let productRequests = wishlist.map(productId => {
       return fetch(`/products/${productId}.json`)
-        .then(response => {
-          if (!response.ok) throw new Error("Product not found");
-          return response.json();
-        })
-        .then(data => data.product)
-        .catch(error => console.error("Error loading product:", error));
+        .then(response => response.ok ? response.json() : null)
+        .then(data => data ? data.product : null)
+        .catch(() => null);
     });
 
     Promise.all(productRequests).then(products => {
       let html = products
-        .filter(product => product) // Remove failed requests
+        .filter(product => product) // Remove null responses
         .map(product => `
-          <div class="wishlist-item">
-            <img src="${product.images[0].src}" alt="${product.title}" width="100">
-            <h3><a href="${product.url}">${product.title}</a></h3>
-            <p>Price: ${product.variants[0].price}</p>
-            <button onclick="removeFromWishlist('${product.id}')">Remove</button>
-          </div>
+          <tr>
+            <td class="text-center">
+              <button class="btn btn-danger" onclick="removeFromWishlist('${product.id}')">
+                <i class="fa fa-times-circle"></i>
+              </button>
+            </td>
+            <td class="text-center">
+              <a href="${product.url}">
+                <img src="${product.images[0].src}" alt="${product.title}" class="img-thumbnail" width="80">
+              </a>
+            </td>
+            <td class="text-center"><a href="${product.url}">${product.title}</a></td>
+            <td class="text-center">${product.variants[0].price}</td>
+            <td class="text-center">
+              <button class="btn btn-primary" onclick="addToCart('${product.variants[0].id}')">Add to Cart</button>
+            </td>
+          </tr>
         `).join("");
 
-      container.innerHTML = html;
+      tableBody.innerHTML = html;
     });
   }
 
@@ -48,5 +71,10 @@
     wishlist = wishlist.filter(id => id !== productId);
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
     loadWishlistItems();
+  }
+
+  function addToCart(variantID) {
+    document.getElementById('product-select').value = variantID;
+    document.getElementById('add-variant').submit();
   }
 </script>
