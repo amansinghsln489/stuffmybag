@@ -17,12 +17,10 @@
               </tr>
             </thead>
             {% for collection in collections %}
-              <p>Collection Title: {{ collection.title }}</p>
-              <p>Collection Handle: {{ collection.handle }}</p>
-              <p>
-                Collection URL: <a href="{{ collection.url }}">{{ collection.title }}</a>
-              </p>
-              <hr>
+              {% for product in collection.products %}
+                {{ product }}
+                <hr>
+              {% endfor %}
             {% endfor %}
             {% for tag in customer.tags %}
               {% assign the_test = 'nutthin' %}
