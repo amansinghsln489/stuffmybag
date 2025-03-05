@@ -26,8 +26,9 @@
 
               {% for tag in customer.tags %}
                 {% capture cur_tag %}{{ tag }}{% endcapture %}
-                {{ cur_tag }}
+
                 {% if cur_tag contains tag_id %}
+                  {{ cur_tag }}
                   {% assign difference = tag_size | minus: cur_tag.size %}
                   {% if difference == 0 %}
                     {% assign the_test = tag_id %}
