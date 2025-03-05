@@ -16,12 +16,7 @@
                 <td class="text-center">{{ 'wishlist.general.add_cart' | t }}</td>
               </tr>
             </thead>
-            {% for collection in collections %}
-              {% for product in collection.products %}
-                {{ product.id }}
-                <hr>
-              {% endfor %}
-            {% endfor %}
+
             {% for tag in customer.tags %}
               {% assign the_test = 'nutthin' %}
 
@@ -49,6 +44,9 @@
                         {%- assign display = false -%}
                       {%- else -%}
                         {%- assign display = true -%}
+                      {%- endif %}
+                      {% if display and the_test contains product_id %}
+                        {{ the_test }}
                       {%- endif %}
                       {% if display and the_test contains product_id %}
                         <tbody data-line="{{ forloop.index }}">
