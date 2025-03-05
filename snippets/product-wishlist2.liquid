@@ -6,7 +6,7 @@
     {% if tagID contains productID %}
       {% capture value %}x{{ tagID }}{% endcapture %}
     {% endif %}
-    {% if value.size == blank %}
+    {% if value.size == 0 %}
       {% assign value = productID %}
     {% endif %}
   {% endfor %}
