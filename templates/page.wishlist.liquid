@@ -1,54 +1,52 @@
-<h1>Your Wishlist</h1>
-
+<h1>My Wishlist</h1>
 <div id="wishlist-container">
-  <p>Loading your wishlist...</p>
+  <p>Loading wishlist...</p>
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-  loadWishlistItems();
-});
+  document.addEventListener("DOMContentLoaded", function () {
+    loadWishlistItems();
+  });
 
-function loadWishlistItems() {
-  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-  let container = document.getElementById("wishlist-container");
-  container.innerHTML = ""; // Clear existing content
+  function loadWishlistItems() {
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    let container = document.getElementById("wishlist-container");
 
-  if (wishlist.length === 0) {
-    container.innerHTML = "<p>Your wishlist is empty.</p>";
-    return;
+    if (wishlist.length === 0) {
+      container.innerHTML = "<p>Your wishlist is empty.</p>";
+      return;
+    }
+
+    let productRequests = wishlist.map(productId => {
+      return fetch(`/products/${productId}.json`)
+        .then(response => {
+          if (!response.ok) throw new Error("Product not found");
+          return response.json();
+        })
+        .then(data => data.product)
+        .catch(error => console.error("Error loading product:", error));
+    });
+
+    Promise.all(productRequests).then(products => {
+      let html = products
+        .filter(product => product) // Remove failed requests
+        .map(product => `
+          <div class="wishlist-item">
+            <img src="${product.images[0].src}" alt="${product.title}" width="100">
+            <h3><a href="${product.url}">${product.title}</a></h3>
+            <p>Price: ${product.variants[0].price}</p>
+            <button onclick="removeFromWishlist('${product.id}')">Remove</button>
+          </div>
+        `).join("");
+
+      container.innerHTML = html;
+    });
   }
 
-  wishlist.forEach(handle => {
-    fetch(`/products/${handle}.json`) // Use handle instead of ID
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`Product not found: ${handle}`);
-        }
-        return response.json();
-      })
-      .then(data => {
-        let product = data.product;
-        let productHTML = `
-          <div class="wishlist-item">
-            <a href="${product.url}">
-              <img src="${product.images[0].src}" alt="${product.title}" width="100">
-              <h3>${product.title}</h3>
-            </a>
-            <p>${product.variants[0].price} {{ shop.currency }}</p>
-            <button onclick="removeFromWishlist('${handle}')">Remove</button>
-          </div>
-        `;
-        container.innerHTML += productHTML;
-      })
-      .catch(error => console.error("Error loading product:", error));
-  });
-}
-
-function removeFromWishlist(handle) {
-  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-  wishlist = wishlist.filter(h => h !== handle);
-  localStorage.setItem("wishlist", JSON.stringify(wishlist));
-  loadWishlistItems(); // Refresh wishlist display
-}
+  function removeFromWishlist(productId) {
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    wishlist = wishlist.filter(id => id !== productId);
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    loadWishlistItems();
+  }
 </script>
