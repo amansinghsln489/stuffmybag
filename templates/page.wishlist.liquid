@@ -35,8 +35,10 @@
 
   // Loop through wishlist and fetch product details
   let productRequests = wishlist.map(productId =>
-    fetch(`/products/10015864586534.json`)
+    fetch(`/products/${productId}.json`)
       .then(response => {
+        let url = `/products/${productId}.json`;  
+  console.log("Fetching URL:", url);
         console.log("Fetching:", `/products/${productId}.json`);
         return response.ok ? response.json() : null;
       })
