@@ -47,7 +47,6 @@
                       {% capture diff %}{{ tag_size | minus:product_id.size | money_without_currency | times:100 | divided_by:2 }}{% endcapture %}
                       {% assign check = diff | split: '.' %}
                       {% if check[1] contains '5' -%}
-                        {{ check[1] }}
                         {%- assign display = false -%}
                       {%- else -%}
                         {%- assign display = true -%}
