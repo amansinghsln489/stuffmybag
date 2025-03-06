@@ -44,7 +44,8 @@
                     {% capture product_id %}{{ product.id }}{% endcapture %}
                     {% assign used = '' %}
                     {% unless used contains product_id %}
-                      {% capture diff %}{{ tag_size | minus:product_id.size | money_without_currency | times:100 | divided_by:2 }}{% endcapture %}
+                      {% assign fixed_tag_size = tag_size | at_least: product_id.size %}
+                      {% capture diff %}{{ fixed_tag_size | minus: product_id.size | times: 100 | divided_by: 2 }}{% endcapture %}
                       <pre>Tag Size: {{ tag_size }}</pre>
                       <pre>Product ID Size: {{ product_id.size }}</pre>
                       <pre>Calculated Diff (Fixed): {{ diff }}</pre>
